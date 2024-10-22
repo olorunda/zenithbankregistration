@@ -1,0 +1,66 @@
+{
+  "node_modules/@fortawesome/fontawesome-free/webfonts/fa-brands-400.ttf": {
+    "file": "assets/fa-brands-400-bc844b5b.ttf",
+    "src": "node_modules/@fortawesome/fontawesome-free/webfonts/fa-brands-400.ttf"
+  },
+  "node_modules/@fortawesome/fontawesome-free/webfonts/fa-brands-400.woff2": {
+    "file": "assets/fa-brands-400-c411f119.woff2",
+    "src": "node_modules/@fortawesome/fontawesome-free/webfonts/fa-brands-400.woff2"
+  },
+  "node_modules/@fortawesome/fontawesome-free/webfonts/fa-regular-400.ttf": {
+    "file": "assets/fa-regular-400-64f9fb62.ttf",
+    "src": "node_modules/@fortawesome/fontawesome-free/webfonts/fa-regular-400.ttf"
+  },
+  "node_modules/@fortawesome/fontawesome-free/webfonts/fa-regular-400.woff2": {
+    "file": "assets/fa-regular-400-c732f106.woff2",
+    "src": "node_modules/@fortawesome/fontawesome-free/webfonts/fa-regular-400.woff2"
+  },
+  "node_modules/@fortawesome/fontawesome-free/webfonts/fa-solid-900.ttf": {
+    "file": "assets/fa-solid-900-31f099c1.ttf",
+    "src": "node_modules/@fortawesome/fontawesome-free/webfonts/fa-solid-900.ttf"
+  },
+  "node_modules/@fortawesome/fontawesome-free/webfonts/fa-solid-900.woff2": {
+    "file": "assets/fa-solid-900-1f0189e0.woff2",
+    "src": "node_modules/@fortawesome/fontawesome-free/webfonts/fa-solid-900.woff2"
+  },
+  "node_modules/@fortawesome/fontawesome-free/webfonts/fa-v4compatibility.ttf": {
+    "file": "assets/fa-v4compatibility-a6274a12.ttf",
+    "src": "node_modules/@fortawesome/fontawesome-free/webfonts/fa-v4compatibility.ttf"
+  },
+  "node_modules/@fortawesome/fontawesome-free/webfonts/fa-v4compatibility.woff2": {
+    "file": "assets/fa-v4compatibility-2aca24b3.woff2",
+    "src": "node_modules/@fortawesome/fontawesome-free/webfonts/fa-v4compatibility.woff2"
+  },
+  "node_modules/intl-tel-input/build/img/flags.png": {
+    "file": "assets/flags-54dc5bc4.png",
+    "src": "node_modules/intl-tel-input/build/img/flags.png"
+  },
+  "node_modules/intl-tel-input/build/img/flags@2x.png": {
+    "file": "assets/flags@2x-9bd00899.png",
+    "src": "node_modules/intl-tel-input/build/img/flags@2x.png"
+  },
+  "resources/js/app.css": {
+    "file": "assets/app-abbcda7c.css",
+    "src": "resources/js/app.css"
+  },
+  "resources/js/app.js": {
+    "assets": [
+      "assets/fa-brands-400-c411f119.woff2",
+      "assets/fa-brands-400-bc844b5b.ttf",
+      "assets/fa-regular-400-c732f106.woff2",
+      "assets/fa-regular-400-64f9fb62.ttf",
+      "assets/fa-solid-900-1f0189e0.woff2",
+      "assets/fa-solid-900-31f099c1.ttf",
+      "assets/fa-v4compatibility-2aca24b3.woff2",
+      "assets/fa-v4compatibility-a6274a12.ttf",
+      "assets/flags-54dc5bc4.png",
+      "assets/flags@2x-9bd00899.png"
+    ],
+    "css": [
+      "assets/app-abbcda7c.css"
+    ],
+    "file": "assets/app-830bf75c.js",
+    "isEntry": true,
+    "src": "resources/js/app.js"
+  }
+}
