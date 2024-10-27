@@ -18,7 +18,7 @@ class Index extends Component
     public bool $show_consent = true;
     public $step_one = true;
     public $final_step = false;
-    public $fullname;
+    public $firstname,$lastname;
     public $company;
     public $job_title;
     public $phone;
@@ -56,7 +56,8 @@ class Index extends Component
 
         $this->validate([
             'email' => ['required', 'string', 'email', 'unique:registrations,email'],
-            'fullname' => ['required', 'string', 'min:3'],
+            'firstname' => ['required', 'string', 'min:3'],
+            'lastname' => ['required', 'string', 'min:3'],
             'company' => ['required', 'string', 'min:3'],
             'phone' => ['required', 'unique:registrations,phone'],
             'zenith_customer' => ['required', 'string', Rule::in(['yes', 'no'])],
@@ -65,7 +66,7 @@ class Index extends Component
             'master_classes' => ['required:if:attending_masterclass,==,yes']
         ]);
 
-        $this->fullname = cleaner($this->fullname);
+        $this->fullname = cleaner($this->firstname.' '.$this->lastname);
         $this->email = cleaner($this->email);
         $this->phone = cleaner($this->phone);
         $this->company = cleaner($this->company);

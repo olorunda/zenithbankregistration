@@ -13,11 +13,11 @@
                                 class="lg:flex lg:justify-between lg:items-center lg:space-x-5 space-y-5 lg:space-y-0 w-full mb-2">
                             <div class="w-full">
                                 <div class="relative h-14">
-                                    <input id="company" type="text" wire:model.defer="company"
+                                    <input id="firstname" type="text" wire:model.defer="firstname"
                                            class="block px-3 pb-2.5 pt-4 w-full text-white bg-transparent rounded-lg appearance-none focus:outline-none peer peer-focus:outline-none focus:ring-0 border-0 focus:border-0 text-xs lg:text-sm"
                                            placeholder=" "/>
-                                    <label for="company"
-                                           class="absolute text-sm text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] left-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-focus:scale-75 peer-focus:-translate-y-4 peer-focus:text-white peer-placeholder-shown:top-1/2 peer-focus:top-2 px-2 peer-focus:px-2 peer-[:not(:placeholder-shown)]:scale-75 peer-[:not(:placeholder-shown)]:-translate-y-4 peer-[:not(:placeholder-shown)]:text-white peer-[:not(:placeholder-shown)]:top-2">Company*</label>
+                                    <label for="firstname"
+                                           class="absolute text-sm text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] left-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-focus:scale-75 peer-focus:-translate-y-4 peer-focus:text-white peer-placeholder-shown:top-1/2 peer-focus:top-2 px-2 peer-focus:px-2 peer-[:not(:placeholder-shown)]:scale-75 peer-[:not(:placeholder-shown)]:-translate-y-4 peer-[:not(:placeholder-shown)]:text-white peer-[:not(:placeholder-shown)]:top-2">First Name*</label>
                                     <div
                                             class="absolute bottom-0 left-2 right-2 h-[1px] bg-white peer-focus:bg-white peer-[:not(:placeholder-shown)]:bg-white">
                                     </div>
@@ -44,18 +44,18 @@
                                     </div>
                                 </div>
 
-                                @error('company')
+                                @error('firstname')
                                 <p class="text-red-600 font-semibold text-xs">{{ $message }}</p>
                                 @enderror
                             </div>
 
                             <div class="w-full">
                                 <div class="relative h-14">
-                                    <input id="fullname" type="text" wire:model.defer="fullname"
+                                    <input id="lastname" type="text" wire:model.defer="lastname"
                                            class="block px-3 pb-2.5 pt-4 w-full text-white bg-transparent rounded-lg appearance-none focus:outline-none peer peer-focus:outline-none focus:ring-0 border-0 focus:border-0 text-xs lg:text-sm"
                                            placeholder=" "/>
-                                    <label for="fullname"
-                                           class="absolute text-sm text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] left-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-focus:scale-75 peer-focus:-translate-y-4 peer-focus:text-white peer-placeholder-shown:top-1/2 peer-focus:top-2 px-2 peer-focus:px-2 peer-[:not(:placeholder-shown)]:scale-75 peer-[:not(:placeholder-shown)]:-translate-y-4 peer-[:not(:placeholder-shown)]:text-white peer-[:not(:placeholder-shown)]:top-2">Full
+                                    <label for="lastname"
+                                           class="absolute text-sm text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] left-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-focus:scale-75 peer-focus:-translate-y-4 peer-focus:text-white peer-placeholder-shown:top-1/2 peer-focus:top-2 px-2 peer-focus:px-2 peer-[:not(:placeholder-shown)]:scale-75 peer-[:not(:placeholder-shown)]:-translate-y-4 peer-[:not(:placeholder-shown)]:text-white peer-[:not(:placeholder-shown)]:top-2">Last
                                         Name*</label>
                                     <div
                                             class="absolute bottom-0 left-2 right-2 h-[1px] bg-white peer-focus:bg-white peer-[:not(:placeholder-shown)]:bg-white">
@@ -83,7 +83,7 @@
                                     </div>
                                 </div>
 
-                                @error('fullname')
+                                @error('lastname')
                                 <p class="text-red-600 font-semibold text-xs">{{ $message }}</p>
                                 @enderror
                             </div>
@@ -388,7 +388,7 @@
                             </div>
                             <div class="text-center px-6 lg:px-8">
                                 <p class="text-[#4F596A] font-medium mb-2 text-sm">Hey
-                                    <strong>{{ $fullname }}</strong>,
+                                    <strong>{{ $lastname }}</strong>,
                                     thank
                                     you for registering for the Zenith Trade Seminar.
                                 </p>
