@@ -319,8 +319,8 @@
                                             wire:model.defer="master_classes" placeholder=" "
                                             class="block px-3 pb-2.5 pt-4 w-full text-white bg-transparent rounded-lg appearance-none focus:outline-none peer peer-focus:outline-none focus:ring-0 border-0 focus:border-0 text-xs lg:text-sm">
                                         <option value="" class="text-black">-Select Master Class-</option>
-                                        <option value="yes" class="text-black">Master Class 1</option>
-                                        <option value="no" class="text-black">Master Class 2</option>
+                                        <option value="Master Class 1" class="text-black">Master Class 1</option>
+                                        <option value="Master Class 2" class="text-black">Master Class 2</option>
                                     </select>
 
                                     <label for="master_classes"

@@ -28,8 +28,11 @@ class Dashboard extends LivewireDatatable
             Column::name('phone')
                 ->label('Phone')->unwrap(),
 
-            Column::name('company')
-                ->label('Company')->unwrap(),
+            Column::name('reason_for_attending')
+                ->label('Reason For Attending')->unwrap(),
+            Column::name('attending_masterclass')
+                ->label('Attending MasterClasses')->unwrap(),
+            Column::name('master_classes')->label('Master Classes')->unwrap(),
 
             Column::callback(['consent'], function ($consent) {
                 return strtoupper($consent);

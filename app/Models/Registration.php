@@ -16,7 +16,7 @@ class Registration extends Model
         'name',
         'email',
         'phone',
-        'company',
+//        'company',
         'consent',
         'reason_for_attending',
         'attending_masterclass',

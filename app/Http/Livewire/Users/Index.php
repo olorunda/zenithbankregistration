@@ -58,7 +58,7 @@ class Index extends Component
             'email' => ['required', 'string', 'email', 'unique:registrations,email'],
             'firstname' => ['required', 'string', 'min:3'],
             'lastname' => ['required', 'string', 'min:3'],
-            'company' => ['required', 'string', 'min:3'],
+//            'company' => ['required', 'string', 'min:3'],
             'phone' => ['required', 'unique:registrations,phone'],
             'zenith_customer' => ['required', 'string', Rule::in(['yes', 'no'])],
             'reason_for_attending' => ['required'],
@@ -66,16 +66,16 @@ class Index extends Component
             'master_classes' => ['required:if:attending_masterclass,==,yes']
         ]);
 
+
         $this->fullname = cleaner($this->firstname.' '.$this->lastname);
         $this->email = cleaner($this->email);
         $this->phone = cleaner($this->phone);
-        $this->company = cleaner($this->company);
+//        $this->company = cleaner($this->company);
         $this->consent = cleaner($this->consent);
         $this->zenith_customer = cleaner($this->zenith_customer);
         $this->reason_for_attending = cleaner($this->reason_for_attending);
         $this->attending_masterclass = cleaner($this->attending_masterclass);
         $this->master_classes = cleaner($this->master_classes);
-
 
 
         try {
@@ -95,7 +95,7 @@ class Index extends Component
                 $token = $this->verifyToken("ZEN-" . Str::random(5) . "-" . mt_rand(1000, 9999));
                 $image = generateQrCode(route('portal.view-registration', $token));
 
-                $this->qr_code_url = Cloudinary::upload($image)->getSecurePath();
+                $this->qr_code_url = $image;//Cloudinary::upload($image)->getSecurePath();
 
                 $registration->qrcode()->create([
                     'url' => $this->qr_code_url,
