@@ -53,7 +53,7 @@ class Index extends Component
 
     public function createBooking()
     {
-
+//dd($this->phone);
         $this->validate([
             'email' => ['required', 'string', 'email', 'unique:registrations,email'],
             'firstname' => ['required', 'string', 'min:3'],
@@ -63,9 +63,8 @@ class Index extends Component
             'zenith_customer' => ['required', 'string', Rule::in(['yes', 'no'])],
             'reason_for_attending' => ['required'],
             'attending_masterclass' => ['required', Rule::in(['yes', 'no'])],
-            'master_classes' => ['required:if:attending_masterclass,==,yes']
+//            'master_classes' => ['required:if:attending_masterclass,==,yes']
         ]);
-
 
 
         $this->fullname = cleaner($this->firstname.' '.$this->lastname);

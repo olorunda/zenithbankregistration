@@ -164,7 +164,7 @@ unset($__errorArgs, $__bag); ?>
 <?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag && $constructor = (new ReflectionClass(Victorybiz\LaravelTelInput\LaravelTelInput::class))->getConstructor()): ?>
 <?php $attributes = $attributes->except(collect($constructor->getParameters())->map->getName()->all()); ?>
 <?php endif; ?>
-<?php $component->withAttributes(['wire:model.lazy' => 'phone','class' => 'block px-3 pb-2.5 pt-4 w-full text-sm text-white bg-transparent rounded-lg form-class border-white h-14 focus:outline-none focus:ring-0 focus:border-white','placeholder' => '']); ?>
+<?php $component->withAttributes(['wire:model.defer' => 'phone','class' => 'block px-3 pb-2.5 pt-4 w-full text-sm text-white bg-transparent rounded-lg form-class border-white h-14 focus:outline-none focus:ring-0 focus:border-white','placeholder' => '']); ?>
 <?php echo $__env->renderComponent(); ?>
 <?php endif; ?>
 <?php if (isset($__componentOriginal4209ccdd55c60cbd168ef152790c641819fc5d9f)): ?>
