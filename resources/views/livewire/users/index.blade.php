@@ -135,7 +135,7 @@
                                     {{--                                        class="block px-3 pb-2.5 pt-4 w-full text-white bg-transparent rounded-lg appearance-none focus:outline-none peer peer-focus:outline-none focus:ring-0 border-0 focus:border-0 text-xs lg:text-sm"--}}
                                     {{--                                        placeholder=" " />--}}
 
-                                    <x-tel-input wire:model.defer="phone" id="phone"  name="phone"
+                                    <x-tel-input wire:ignore wire:key="{{mt_rand(11111,55555)}}" wire:model.defer="phone" id="phone"  name="phone"
                                                  class="block px-3 pb-2.5 pt-4 w-full text-sm text-white bg-transparent rounded-lg form-class border-white h-14 focus:outline-none focus:ring-0 focus:border-white"
                                                  placeholder=""/>
                                     {{--                                    <label for="phone"--}}
