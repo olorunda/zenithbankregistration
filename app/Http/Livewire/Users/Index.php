@@ -25,14 +25,17 @@ class Index extends Component
     public $email;
     public $qr_code_url;
     public $consent;
-    public $zenith_customer = 'yes';
-    public string $reason_for_attending;
-    public string $master_classes;
-    public string $attending_masterclass;
-
+    public $zenith_customer = 'no';
+    public string $reason_for_attending='';
+    public string $master_classes='';
+    public string $attending_masterclass='no';
     protected $listeners = ['hideOtherClasses'];
-    public string $show_masterclasses= '';
+    public string $show_masterclasses='display:none';
     public string $error_message='';
+    /**
+     * @var mixed|string
+     */
+    public string $token_show='';
 
     public function render()
     {
@@ -47,10 +50,7 @@ class Index extends Component
         }
     }
 
-    public function mount()
-    {
-        $this->attending_masterclass='yes';
-    }
+
     public function createBooking()
     {
 
@@ -67,6 +67,7 @@ class Index extends Component
         ]);
 
 
+
         $this->fullname = cleaner($this->firstname.' '.$this->lastname);
         $this->email = cleaner($this->email);
         $this->phone = cleaner($this->phone);
@@ -79,12 +80,13 @@ class Index extends Component
 
 
         try {
+
             DB::transaction(function (){
                 $registration = Registration::create([
                     'name' => $this->fullname,
                     'email' => $this->email,
                     'phone' => $this->phone,
-                    'company' => $this->company,
+                    'company' => '',
                     'consent' => $this->consent,
                     'reason_for_attending' => $this->reason_for_attending,
                     'attending_masterclass' => $this->attending_masterclass,
@@ -101,12 +103,14 @@ class Index extends Component
                     'url' => $this->qr_code_url,
                     'token' => $token,
                 ]);
+                $this->token_show=$token;
+
 
             });
+
             $this->step_one = false;
             $this->final_step = true;
-            $this->sendSuccessMail();
-
+           $this->sendSuccessMail();
 
         } catch (\Exception $ex) {
 
@@ -141,10 +145,11 @@ class Index extends Component
     {
 
         $body = "<p style='text-align:center; font-weight:bold'>Thank you,  {$this->fullname}</p>";
-        $body .= "<p style='text-align:center;'>You are all signed up for <b>The Zenith Bank International Trade Seminar.</b></p>";
-        $body .= "<p style='text-align:center; font-weight:bold'>Theme: Nigerian's Non-Oil Export Industry- Awakening The Giant</p>";
+        $body .= "<p style='text-align:center;'>You are all signed up for <b>The Zenith Tech Fair 2024.</b></p>";
+        $body .= "<p style='text-align:center; font-weight:bold'>Theme: Embedded Financing, Cybersecurity & Gowth Imperatives</p>";
         $body .= "<p><b>Address: </b>The Civic Centre, Ozumba Mbadiwe, Victoria Island, Lagos.</p>";
-        $body .= "<p><b>Date: </b>Wednesday, September 4, 2024.</p>";
+        $body .= "<p><b>Access Code: </b$this->token_show.</p>";
+        $body .= "<p><b>Date: </b>Thursday, November 21st, 2024.</p>";
         $body .= "<p><b>Time: </b>9:00 am</p>";
         $body .= "<div style='text-align:center'><img src='{$this->qr_code_url}' style='width:50%' /></div>";
 

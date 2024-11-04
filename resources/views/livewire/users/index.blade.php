@@ -217,10 +217,10 @@
                         <div class="w-full">
                             <div class="relative h-14">
                                 <select name="reason_for_attending" id="reason_for_attending"
-                                        wire:model.defer="reason_for_attending" placeholder=" "
+                                        wire:model="reason_for_attending" placeholder=" "
                                         class="block px-3 pb-2.5 pt-4 w-full text-white rounded-lg bg-transparent appearance-none focus:outline-none peer peer-focus:outline-none focus:ring-0 border-0 focus:border-0 text-xs lg:text-sm">
 
-                                    <option value="" class="text-black">-Select Reason For Attending Master Classes-</option>
+                                    <option value="" class="text-black">- Select -</option>
                                     <option value="Attend workshop/conference" class="text-black">Attend workshop/conference</option>
                                     <option value="Evaluate exhibiting opportunities" class="text-black">Evaluate exhibiting opportunities</option>
                                     <option value="Find startups to invest in" class="text-black">Find startups to invest in</option>
@@ -232,7 +232,7 @@
 
                                 <label for="reason_for_attending"
                                        class="absolute text-sm text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] left-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-focus:scale-75 peer-focus:-translate-y-4 peer-focus:text-white peer-placeholder-shown:top-1/2 peer-focus:top-2 px-2 peer-focus:px-2 peer-[:not(:placeholder-shown)]:scale-75 peer-[:not(:placeholder-shown)]:-translate-y-4 peer-[:not(:placeholder-shown)]:text-white peer-[:not(:placeholder-shown)]:top-2">
-                                    Reasons for attending the Zenith Tech Fair 4.0*</label>
+                                    Reasons for attending Tech Fair 4.0*</label>
                                 <div
                                         class="absolute bottom-0 left-2 right-2 h-[1px] bg-gray-500 peer-focus:bg-white peer-[:not(:placeholder-shown)]:bg-white">
                                 </div>
@@ -244,7 +244,7 @@
                                 </div>
 
                                 <div
-                                        class="absolute top-0 left-[5px] peer-focus:left-[270px] peer-[:not(:placeholder-shown)]:left-[270px] right-[5px] h-[1px] bg-gray-500 peer-focus:bg-white peer-[:not(:placeholder-shown)]:bg-white">
+                                        class="absolute top-0 left-[5px] peer-focus:left-[200px] peer-[:not(:placeholder-shown)]:left-[200px] right-[5px] h-[1px] bg-gray-500 peer-focus:bg-white peer-[:not(:placeholder-shown)]:bg-white">
                                 </div>
 
 
@@ -321,6 +321,8 @@
                                         <option value="" class="text-black">-Select Master Class-</option>
                                         <option value="Master Class 1" class="text-black">Master Class 1</option>
                                         <option value="Master Class 2" class="text-black">Master Class 2</option>
+                                        <option value="Master Class 3" class="text-black">Master Class 3</option>
+                                        <option value="Master Class 4" class="text-black">Master Class 4</option>
                                     </select>
 
                                     <label for="master_classes"
@@ -386,11 +388,16 @@
                             <div class="text-center mb-4">
                                 <img src="{{ $qr_code_url }}" alt="" srcset="" class="mx-auto w-1/4">
                             </div>
+                            <div class="text-center mb-4">
+                                <p>
+                              <strong> Access Code:</strong> {{$this->token_show}}
+                                </p>
+                            </div>
                             <div class="text-center px-6 lg:px-8">
                                 <p class="text-[#4F596A] font-medium mb-2 text-sm">Hey
                                     <strong>{{ $lastname }}</strong>,
                                     thank
-                                    you for registering for the Zenith Trade Seminar.
+                                    you for registering for the Zenith Bank Tech Fair Future Forward 4.0.
                                 </p>
                             </div>
                         </div>
@@ -418,8 +425,7 @@
                     <div class="grid grid-cols-1 text-center space-y-5">
                         <div class="space-y-5 mb-2">
                             <p>Zenith Bank is committed to the highest data privacy standards at all times and will only
-                                use the personal information you have provided for the purpose of this International
-                                Trade Seminar, update you periodically about our products, services, promo offerings and
+                                use the personal information you have provided for the purpose of this Tech Fair, update you periodically about our products, services, promo offerings and
                                 other information that may be of interest to you. You may opt out of receiving such
                                 messages at anytime.
                             </p>
@@ -454,6 +460,6 @@
     @endif
 
     <div class="w-full">
-        <p class="text-white text-center mx-auto text-xs lg:text-sm">4th September, 2024.</p>
+        <p class="text-white text-center mx-auto text-xs lg:text-sm">21st November, 2024.</p>
     </div>
 </main>
