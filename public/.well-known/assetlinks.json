@@ -1,0 +1,8 @@
+[{
+      "relation": ["delegate_permission/common.handle_all_urls"],
+      "target": {
+        "namespace": "android_app",
+        "package_name": "com.zbtechfair.twa",
+        "sha256_cert_fingerprints": ["D6:CC:1D:F2:64:09:EC:60:DF:72:54:51:23:3D:E4:15:31:36:B0:7D:95:84:A3:7F:98:C4:A9:BE:D4:D0:8C:70"]
+      }
+    }]
