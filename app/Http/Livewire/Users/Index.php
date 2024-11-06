@@ -97,7 +97,7 @@ class Index extends Component
 
                 $image = generateQrCode(route('portal.view-registration', $token));
                 $this->qr_code_url = $image;//Cloudinary::upload($image)->getSecurePath();
-
+                $this->token_show=$token;
                 $imageInfo = explode(";base64,", $image);
                 $imgExt = str_replace('data:image/', '', $imageInfo[0]);
                 $image = str_replace(' ', '+', $imageInfo[1]);
