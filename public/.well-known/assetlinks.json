@@ -3,6 +3,6 @@
       "target": {
         "namespace": "android_app",
         "package_name": "com.zbtechfair.twa",
-        "sha256_cert_fingerprints": ["AC:EE:FF:B8:82:00:3F:A0:5B:A6:C0:09:B4:F8:D9:36:1F:5A:A9:37:BF:04:59:03:C0:B1:15:15:A2:C8:1A:CD"]
+        "sha256_cert_fingerprints": ["ED:4A:60:48:14:6B:1E:C6:4E:B7:C4:13:65:11:06:5E:1A:E8:BF:74:0A:1A:CF:E6:7C:8F:A1:5F:2F:9A:4A:19"]
       }
     }]
