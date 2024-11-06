@@ -10,6 +10,8 @@
     <?php echo \Victorybiz\LaravelTelInput\LaravelTelInputAssetLoader::outputStyles(); ?>
     <?php echo \Livewire\Livewire::styles(); ?>
 
+
+    <link rel="manifest" href="<?php echo e(asset('manifest.json')); ?>">
     <?php echo app('Illuminate\Foundation\Vite')(['resources/js/app.js']); ?>
     <script>
         if (typeof navigator.serviceWorker !== 'undefined') {

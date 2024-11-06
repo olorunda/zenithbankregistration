@@ -17,6 +17,11 @@ Route::get('/', function () {
     return to_route('registration');
 })->name('welcome');
 
+Route::get('/qr_image/{code}',function ($code){
+    return response()->file(storage_path("app/public/qrcode/$code"));
+
+});
+
 Route::group(['namespace' => '\App\Http\Livewire'], function() {
 
     Route::get('/registration', \Users\Index::class)->name('registration');
