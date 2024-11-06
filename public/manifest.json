@@ -1,8 +1,8 @@
 {
     "short_name": "Zenith Tech Fair",
     "name": "ZTF",
-    "theme_color": "#dc2626",
-    "background_color": "#dc2626",
+    "theme_color": "#fff",
+    "background_color": "#fff",
     "scope": "/",
     "display": "standalone",
     "icons": [
