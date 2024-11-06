@@ -16,6 +16,8 @@
             navigator.serviceWorker.register('{{asset('sw.js')}}')
         }
     </script>
+
+    <link rel="manifest" href="{{asset('manifest.json')}}">
 </head>
 
 <body class="bg-gray-200 font-Poppins">

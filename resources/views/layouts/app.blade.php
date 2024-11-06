@@ -9,6 +9,8 @@
     <title>@yield('title')</title>
     @laravelTelInputStyles
     @livewireStyles
+
+    <link rel="manifest" href="{{asset('manifest.json')}}">
     @vite(['resources/js/app.js'])
     <script>
         if (typeof navigator.serviceWorker !== 'undefined') {
