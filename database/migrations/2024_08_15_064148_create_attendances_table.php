@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('attendances', function (Blueprint $table) {
             $table->id();
             $table->foreignId('registration_id')->constrained()->cascadeOnDelete();
+            $table->timestamp('date_admitted_master_class')->nullable();
             $table->timestamp('date_admitted')->nullable();
             $table->timestamps();
         });

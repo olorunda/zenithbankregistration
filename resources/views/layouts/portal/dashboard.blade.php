@@ -11,6 +11,11 @@
     @yield('styles')
     @livewireStyles
     @vite(['resources/js/app.js'])
+    <script>
+        if (typeof navigator.serviceWorker !== 'undefined') {
+            navigator.serviceWorker.register('{{asset('sw.js')}}')
+        }
+    </script>
 </head>
 
 <body class="bg-gray-200 font-Poppins">

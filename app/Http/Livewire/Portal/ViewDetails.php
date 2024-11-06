@@ -25,9 +25,24 @@ class ViewDetails extends Component
             'date_used' => now()->format('Y-m-d')
         ]);
 
-        Attendance::create([
+        Attendance::updateOrCreate([ 'registration_id' => $this->details->registration->id],[
             'registration_id' => $this->details->registration->id,
             'date_admitted' => now()
+        ]);
+
+        flash()->addFlash('success', 'Successfully marked as present...');
+        return;
+    }
+
+    public function markPresentMasterClass()
+    {
+        $this->details->update([
+            'date_used_master_class' => now()->format('Y-m-d')
+        ]);
+
+        Attendance::updateOrCreate([ 'registration_id' => $this->details->registration->id],[
+            'registration_id' => $this->details->registration->id,
+            'date_admitted_master_class' => now()
         ]);
 
         flash()->addFlash('success', 'Successfully marked as present...');

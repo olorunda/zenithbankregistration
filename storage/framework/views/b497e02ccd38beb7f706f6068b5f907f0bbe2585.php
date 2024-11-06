@@ -11,9 +11,16 @@
     <?php echo \Livewire\Livewire::styles(); ?>
 
     <?php echo app('Illuminate\Foundation\Vite')(['resources/js/app.js']); ?>
+    <script>
+        if (typeof navigator.serviceWorker !== 'undefined') {
+            navigator.serviceWorker.register('<?php echo e(asset('sw.js')); ?>')
+        }
+    </script>
+
 </head>
 
 <body class="bg-[url('/assets/images/bg.png')] flex flex-col font-Poppins bg-no-repeat min-h-screen" style="background-size: 100% 100%">
+
     <nav class="flex items-center w-full justify-end">
         <div class="py-4 px-2 lg:px-8 lg:py-8">
             <a href="<?php echo e(route('welcome')); ?>" class="">
