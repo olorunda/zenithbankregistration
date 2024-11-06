@@ -3,11 +3,10 @@
     "name": "ZTF",
     "theme_color": "#dc2626",
     "background_color": "#dc2626",
-    "scope" : "/",
+    "scope": "/",
     "display": "standalone",
     "icons": [
         {
-
             "src": "dist/img/icon_48_48_dpi.png",
             "type": "image/png",
             "sizes": "48x48"
@@ -39,5 +38,12 @@
         }
     ],
     "start_url": "https://zbtechfair.com/registration",
-    "orientation": "portrait"
+    "orientation": "portrait",
+    "id": "35535",
+    "description": "Zenith Tech Fair 4.0",
+    "dir": "auto",
+    "lang": "en",
+    "categories": [
+        "education"
+    ]
 }
