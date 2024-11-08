@@ -1,1 +1,0 @@
-<span class="bg-yellow-100"><?php echo e($slot); ?></span><?php /**PATH C:\Users\ADMIN\PhpstormProjects\zenithbank\resources\views/livewire/datatables/highlight.blade.php ENDPATH**/ ?>
