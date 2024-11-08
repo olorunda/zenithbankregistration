@@ -17,7 +17,8 @@
                                            class="block px-3 pb-2.5 pt-4 w-full text-white bg-transparent rounded-lg appearance-none focus:outline-none peer peer-focus:outline-none focus:ring-0 border-0 focus:border-0 text-xs lg:text-sm"
                                            placeholder=" "/>
                                     <label for="firstname"
-                                           class="absolute text-sm text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] left-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-focus:scale-75 peer-focus:-translate-y-4 peer-focus:text-white peer-placeholder-shown:top-1/2 peer-focus:top-2 px-2 peer-focus:px-2 peer-[:not(:placeholder-shown)]:scale-75 peer-[:not(:placeholder-shown)]:-translate-y-4 peer-[:not(:placeholder-shown)]:text-white peer-[:not(:placeholder-shown)]:top-2">First Name*</label>
+                                           class="absolute text-sm text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] left-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-focus:scale-75 peer-focus:-translate-y-4 peer-focus:text-white peer-placeholder-shown:top-1/2 peer-focus:top-2 px-2 peer-focus:px-2 peer-[:not(:placeholder-shown)]:scale-75 peer-[:not(:placeholder-shown)]:-translate-y-4 peer-[:not(:placeholder-shown)]:text-white peer-[:not(:placeholder-shown)]:top-2">First
+                                        Name*</label>
                                     <div
                                             class="absolute bottom-0 left-2 right-2 h-[1px] bg-white peer-focus:bg-white peer-[:not(:placeholder-shown)]:bg-white">
                                     </div>
@@ -135,7 +136,8 @@
                                     {{--                                        class="block px-3 pb-2.5 pt-4 w-full text-white bg-transparent rounded-lg appearance-none focus:outline-none peer peer-focus:outline-none focus:ring-0 border-0 focus:border-0 text-xs lg:text-sm"--}}
                                     {{--                                        placeholder=" " />--}}
 
-                                    <x-tel-input wire:ignore wire:key="{{mt_rand(11111,55555)}}" wire:model.defer="phone" id="phone"  name="phone"
+                                    <x-tel-input wire:ignore wire:key="{{mt_rand(11111,55555)}}"
+                                                 wire:model.defer="phone" id="phone" name="phone"
                                                  class="block px-3 pb-2.5 pt-4 w-full text-sm text-white bg-transparent rounded-lg form-class border-white h-14 focus:outline-none focus:ring-0 focus:border-white"
                                                  placeholder=""/>
                                     {{--                                    <label for="phone"--}}
@@ -221,13 +223,27 @@
                                         class="block px-3 pb-2.5 pt-4 w-full text-white rounded-lg bg-transparent appearance-none focus:outline-none peer peer-focus:outline-none focus:ring-0 border-0 focus:border-0 text-xs lg:text-sm">
 
                                     <option value="" class="text-black">- Select -</option>
-                                    <option value="Attend workshop/conference" class="text-black">Attend workshop/conference</option>
-                                    <option value="Evaluate exhibiting opportunities" class="text-black">Evaluate exhibiting opportunities</option>
-                                    <option value="Find startups to invest in" class="text-black">Find startups to invest in</option>
-                                    <option value="Keep an eye on the competition" class="text-black">Keep an eye on the competition</option>
-                                    <option value="Learn about the latest industry trends" class="text-black">Learn about the latest industry trends</option>
-                                    <option value="Network with partners, clients and suppliers" class="text-black">Network with partners, clients and suppliers</option>
-                                    <option value="Source products and services" class="text-black">Source products and services</option>
+                                    <option value="Attend workshop/conference" class="text-black">Attend
+                                        workshop/conference
+                                    </option>
+                                    <option value="Evaluate exhibiting opportunities" class="text-black">Evaluate
+                                        exhibiting opportunities
+                                    </option>
+                                    <option value="Find startups to invest in" class="text-black">Find startups to
+                                        invest in
+                                    </option>
+                                    <option value="Keep an eye on the competition" class="text-black">Keep an eye on the
+                                        competition
+                                    </option>
+                                    <option value="Learn about the latest industry trends" class="text-black">Learn
+                                        about the latest industry trends
+                                    </option>
+                                    <option value="Network with partners, clients and suppliers" class="text-black">
+                                        Network with partners, clients and suppliers
+                                    </option>
+                                    <option value="Source products and services" class="text-black">Source
+                                        products and services
+                                    </option>
                                 </select>
 
                                 <label for="reason_for_attending"
@@ -246,7 +262,6 @@
                                 <div
                                         class="absolute top-0 left-[5px] peer-focus:left-[200px] peer-[:not(:placeholder-shown)]:left-[200px] right-[5px] h-[1px] bg-gray-500 peer-focus:bg-white peer-[:not(:placeholder-shown)]:bg-white">
                                 </div>
-
 
 
                                 <div
@@ -272,15 +287,17 @@
                         <div class="w-full">
                             <div class="relative h-14">
                                 <select name="attending_masterclass" id="attending_masterclass"
-                                        wire:change="attendingMasterClass"  wire:model.defer="attending_masterclass" placeholder=" "
+                                        wire:change="attendingMasterClass" wire:model.defer="attending_masterclass"
+                                        placeholder=" "
                                         class="block px-3 pb-2.5 pt-4 w-full text-white bg-transparent rounded-lg appearance-none focus:outline-none peer peer-focus:outline-none focus:ring-0 border-0 focus:border-0 text-xs lg:text-sm">
+                                    <option value="" class="text-black"> - Select -</option>
                                     <option value="yes" class="text-black">Yes</option>
                                     <option value="no" class="text-black">No</option>
                                 </select>
 
                                 <label for="attending_masterclass"
                                        class="absolute text-sm text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] left-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-focus:scale-75 peer-focus:-translate-y-4 peer-focus:text-white peer-placeholder-shown:top-1/2 peer-focus:top-2 px-2 peer-focus:px-2 peer-[:not(:placeholder-shown)]:scale-75 peer-[:not(:placeholder-shown)]:-translate-y-4 peer-[:not(:placeholder-shown)]:text-white peer-[:not(:placeholder-shown)]:top-2">
-                                    Will you be attending our Masterclass*</label>
+                                    Will you be attending our Master class*</label>
 
                                 <div
                                         class="absolute bottom-0 left-2 right-2 h-[1px] bg-gray-500 peer-focus:bg-white peer-[:not(:placeholder-shown)]:bg-white">
@@ -313,47 +330,55 @@
                         </div>
 
 
-                            <div class="w-full"  style="{{$show_masterclasses}}">
-                                <div class="relative h-14">
-                                    <select name="master_classes" id="master_classes"
-                                            wire:model.defer="master_classes" placeholder=" "
-                                            class="block px-3 pb-2.5 pt-4 w-full text-white bg-transparent rounded-lg appearance-none focus:outline-none peer peer-focus:outline-none focus:ring-0 border-0 focus:border-0 text-xs lg:text-sm">
-                                        <option value="" class="text-black">-Select Master Class-</option>
-                                        <option value="Master Class 1" class="text-black">Master Class 1</option>
-                                        <option value="Master Class 2" class="text-black">Master Class 2</option>
-                                        <option value="Master Class 3" class="text-black">Master Class 3</option>
-                                        <option value="Master Class 4" class="text-black">Master Class 4</option>
-                                    </select>
+                        <div class="w-full" style="{{$show_masterclasses}}">
+                            <div class="relative h-14">
+                                <select name="master_classes" id="master_classes"
+                                        wire:model.defer="master_classes" placeholder=" "
+                                        class="block px-3 pb-2.5 pt-4 w-full text-white bg-transparent rounded-lg appearance-none focus:outline-none peer peer-focus:outline-none focus:ring-0 border-0 focus:border-0 text-xs lg:text-sm">
+                                    <option value="" class="text-black">- Select Master Class -</option>
+                                    <option value="Enterprise AI Adoption:
+                                        Techniques, Infrastructure, and Impact on Operations - Oracle Technology" class="text-black">Enterprise AI Adoption:
+                                        Techniques, Infrastructure, and Impact on Operations - Oracle Technology
+                                    </option>
+                                    <option value="Advanced Threat Actor Analysis and
+                                        Attribution through AI-Powered Insights - CyberSOC" class="text-black">Advanced Threat Actor Analysis and
+                                        Attribution through AI-Powered Insights - CyberSOC
+                                    </option>
+                                    <option value="Accelerating Innovation: An
+                                        Overview of Hybrid Distributed cloud and its capabilities for FSS - IBM" class="text-black">Accelerating Innovation: An
+                                        Overview of Hybrid Distributed cloud and its capabilities for FSS - IBM
+                                    </option>
+                                </select>
 
-                                    <label for="master_classes"
-                                           class="absolute text-sm text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] left-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-focus:scale-75 peer-focus:-translate-y-4 peer-focus:text-white peer-placeholder-shown:top-1/2 peer-focus:top-2 px-2 peer-focus:px-2 peer-[:not(:placeholder-shown)]:scale-75 peer-[:not(:placeholder-shown)]:-translate-y-4 peer-[:not(:placeholder-shown)]:text-white peer-[:not(:placeholder-shown)]:top-2">
-                                        Master Classes*</label>
+                                <label for="master_classes"
+                                       class="absolute text-sm text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] left-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-focus:scale-75 peer-focus:-translate-y-4 peer-focus:text-white peer-placeholder-shown:top-1/2 peer-focus:top-2 px-2 peer-focus:px-2 peer-[:not(:placeholder-shown)]:scale-75 peer-[:not(:placeholder-shown)]:-translate-y-4 peer-[:not(:placeholder-shown)]:text-white peer-[:not(:placeholder-shown)]:top-2">
+                                    Masterclasses*</label>
 
-                                    <div
-                                            class="absolute bottom-0 left-2 right-2 h-[1px] bg-gray-500 peer-focus:bg-white peer-[:not(:placeholder-shown)]:bg-white">
-                                    </div>
-                                    <div
-                                            class="absolute bottom-2 left-0 w-[1px] h-[calc(100%-15px)] bg-gray-500 peer-focus:bg-white peer-[:not(:placeholder-shown)]:bg-white">
-                                    </div>
-                                    <div
-                                            class="absolute bottom-2 right-0 w-[1px] h-[calc(100%-15px)] bg-gray-500 peer-focus:bg-white peer-[:not(:placeholder-shown)]:bg-white">
-                                    </div>
-                                    <div
-                                            class="absolute top-0 left-[5px] peer-focus:left-[100px] peer-[:not(:placeholder-shown)]:left-[100px] right-[5px] h-[1px] bg-gray-500 peer-focus:bg-white peer-[:not(:placeholder-shown)]:bg-white">
-                                    </div>
-                                    <div
-                                            class="absolute top-0 left-0 w-2 h-2 border-t border-l border-gray-500 peer-focus:border-white peer-[:not(:placeholder-shown)]:border-white rounded-tl-lg">
-                                    </div>
-                                    <div
-                                            class="absolute top-0 right-0 w-2 h-2 border-t border-r border-gray-500 peer-focus:border-white peer-[:not(:placeholder-shown)]:border-white rounded-tr-lg">
-                                    </div>
-                                    <div
-                                            class="absolute bottom-0 left-0 w-2 h-2 border-b border-l border-gray-500 peer-focus:border-white peer-[:not(:placeholder-shown)]:border-white rounded-bl-lg">
-                                    </div>
-                                    <div
-                                            class="absolute bottom-0 right-0 w-2 h-2 border-b border-r border-gray-500 peer-focus:border-white peer-[:not(:placeholder-shown)]:border-white rounded-br-lg">
-                                    </div>
+                                <div
+                                        class="absolute bottom-0 left-2 right-2 h-[1px] bg-gray-500 peer-focus:bg-white peer-[:not(:placeholder-shown)]:bg-white">
                                 </div>
+                                <div
+                                        class="absolute bottom-2 left-0 w-[1px] h-[calc(100%-15px)] bg-gray-500 peer-focus:bg-white peer-[:not(:placeholder-shown)]:bg-white">
+                                </div>
+                                <div
+                                        class="absolute bottom-2 right-0 w-[1px] h-[calc(100%-15px)] bg-gray-500 peer-focus:bg-white peer-[:not(:placeholder-shown)]:bg-white">
+                                </div>
+                                <div
+                                        class="absolute top-0 left-[5px] peer-focus:left-[100px] peer-[:not(:placeholder-shown)]:left-[100px] right-[5px] h-[1px] bg-gray-500 peer-focus:bg-white peer-[:not(:placeholder-shown)]:bg-white">
+                                </div>
+                                <div
+                                        class="absolute top-0 left-0 w-2 h-2 border-t border-l border-gray-500 peer-focus:border-white peer-[:not(:placeholder-shown)]:border-white rounded-tl-lg">
+                                </div>
+                                <div
+                                        class="absolute top-0 right-0 w-2 h-2 border-t border-r border-gray-500 peer-focus:border-white peer-[:not(:placeholder-shown)]:border-white rounded-tr-lg">
+                                </div>
+                                <div
+                                        class="absolute bottom-0 left-0 w-2 h-2 border-b border-l border-gray-500 peer-focus:border-white peer-[:not(:placeholder-shown)]:border-white rounded-bl-lg">
+                                </div>
+                                <div
+                                        class="absolute bottom-0 right-0 w-2 h-2 border-b border-r border-gray-500 peer-focus:border-white peer-[:not(:placeholder-shown)]:border-white rounded-br-lg">
+                                </div>
+                            </div>
 
                             @error('master_classes')
                             <p class="text-red-600 font-semibold text-xs">{{ $message }}</p>
@@ -365,13 +390,13 @@
                             @if($error_message)
                                 <p class="text-red-600 font-semibold  text-lg">{{ $error_message }}</p>
                                 @enderror
-                            <button type="submit"
-                                    class="bg-red-600 text-white px-8 py-3 rounded-md w-full uppercase font-semibold">
-                                Submit
-                                <span wire:loading wire:target="createBooking">
+                                <button type="submit"
+                                        class="bg-red-600 text-white px-8 py-3 rounded-md w-full uppercase font-semibold">
+                                    Submit
+                                    <span wire:loading wire:target="createBooking">
                                     <i class="fas fa-spinner fa-spin"></i>
                                 </span>
-                            </button>
+                                </button>
 
                         </div>
                     </form>
@@ -390,7 +415,7 @@
                             </div>
                             <div class="text-center mb-4">
                                 <p>
-                              <strong> Access Code:</strong> {{$this->token_show}}
+                                    <strong> Access Code:</strong> {{$this->token_show}}
                                 </p>
                             </div>
                             <div class="text-center px-6 lg:px-8">
@@ -425,7 +450,8 @@
                     <div class="grid grid-cols-1 text-center space-y-5">
                         <div class="space-y-5 mb-2">
                             <p>Zenith Bank is committed to the highest data privacy standards at all times and will only
-                                use the personal information you have provided for the purpose of this Tech Fair, update you periodically about our products, services, promo offerings and
+                                use the personal information you have provided for the purpose of this Tech Fair, update
+                                you periodically about our products, services, promo offerings and
                                 other information that may be of interest to you. You may opt out of receiving such
                                 messages at anytime.
                             </p>

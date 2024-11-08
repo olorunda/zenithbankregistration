@@ -17,7 +17,7 @@
             @if ($details->registration->attending_masterclass=='yes' && is_null($details->date_used_master_class))
                 <a href="#" wire:click.prevent="markPresentMasterClass"
                    class="text-sm  border-4 bg-red-400 text-white py-2 px-6 rounded-md">
-                    Mark Present ({{$details->registration->master_classes}})
+                    Mark Present for Master Class
                     <span wire:loading wire:target="markPresentMasterClass">
                         <i class="fas fa-spinner fa-spin"></i>
                     </span>
@@ -72,6 +72,12 @@
                 </div>
 
                 @if ($details->registration->attending_masterclass=='yes' )
+                    <div class="border-b-2 border-gray-300 pb-4 mb-4">
+                        <h6 class="text-left text-[#544837] font-semibold mb-2">Master Class</h6>
+                        <div class="text-left">
+                            {{$details->registration->master_classes}}
+                        </div>
+                    </div>
                     <div class="border-b-2 border-gray-300 pb-4 mb-4">
 
                         <h6 class="text-left text-[#544837] font-semibold mb-2">Date Admitted for
