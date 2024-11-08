@@ -147,13 +147,20 @@ class Index extends Component
     private function sendSuccessMail($token_code):void
     {
 
+        $body = "<p style='text-align:center; font-weight:bold'>Thank you,  {$this->fullname}</p>";
+        $body .= "<p style='text-align:center;'>You are all signed up for <b>The Zenith Tech Fair 2024.</b></p>";
+        $body .= "<p style='text-align:center; font-weight:bold'>Theme:<br> Embedded Financing, Cybersecurity & Growth Imperatives</p>";
+        $body .= "<p><b>Address: </b>The Civic Centre, Ozumba Mbadiwe, Victoria Island, Lagos.</p>";
+        $body .= "<p><b>Access Code: </b>{$token_code}.</p>";
+        $body .= "<p><b>Date: </b>Thursday, November 21, 2024.</p>";
+        $body .= "<p><b>Time: </b>8:00 am</p>";
+        $body .= "<div style='text-align:center'><img src='https://zbtechfair.com/qrcode/$token_code.png' alt='{$token_code}.png' style='width:50%' /></div>";
+
         $payload = [
             'username' => $this->fullname,
-            'fullname' => $this->fullname,
             'email' => $this->email,
             'subject' => "{$this->fullname}, thank you for registering for the event",
-//            'body' => $body,
-            'token_code'=>$token_code
+            'body' => $body
         ];
 
         Mail::to($this->email)->send(new GeneralNotificationMail(
