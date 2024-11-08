@@ -4,6 +4,7 @@
 </div>
 
 {!! $data->body !!}
+<div style='text-align:center'><img src={{$message->embed('qrcode/'.$data->token_code.'.png')}}' alt='{{$data->token_code}}.png' style='width:50%' /></div>
 
 <br>
 <p>You will need to come to the venue with the QR code for access.</p>
