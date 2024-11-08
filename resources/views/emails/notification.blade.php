@@ -4,6 +4,7 @@
 </div>
 
 {!! $data->body !!}
+<div style='text-align:center'><img src='{{asset('qrcode/'.$data->token_code)}}' alt='{{$data->token_code}}.jpg' style='width:50%' /></div>
 
 <br>
 <p>You will need to come to the venue with the QR code for access.</p>
