@@ -81,8 +81,9 @@ class Index extends Component
 
         try {
             $token =$token_code= $this->verifyToken("ZEN-" . Str::random(5) . "-" . mt_rand(1000, 9999));
+            $image = $base64image= generateQrCode(route('portal.view-registration', $token));
 
-            DB::transaction(function () use ($token){
+            DB::transaction(function () use ($token,$image){
                 $registration = Registration::create([
                     'name' => $this->fullname,
                     'email' => $this->email,
@@ -95,8 +96,7 @@ class Index extends Component
                     'is_zenith_customer' => $this->zenith_customer
                 ]);
 
-                $image = generateQrCode(route('portal.view-registration', $token));
-                $this->qr_code_url = $image;//Cloudinary::upload($image)->getSecurePath();
+              $this->qr_code_url = $image;//Cloudinary::upload($image)->getSecurePath();
                 $this->token_show=$token;
                 $imageInfo = explode(";base64,", $image);
                 $imgExt = str_replace('data:image/', '', $imageInfo[0]);
@@ -113,7 +113,7 @@ class Index extends Component
 
             $this->step_one = false;
             $this->final_step = true;
-           $this->sendSuccessMail($token_code);
+           $this->sendSuccessMail($token_code,$base64image);
 
         } catch (\Exception $ex) {
 
@@ -144,7 +144,7 @@ class Index extends Component
         return $token;
     }
 
-    private function sendSuccessMail($token_code):void
+    private function sendSuccessMail($token_code,$image):void
     {
 
         $body = "<p style='text-align:center; font-weight:bold'>Thank you,  {$this->fullname}</p>";
@@ -154,13 +154,13 @@ class Index extends Component
         $body .= "<p><b>Access Code: </b>$token_code.</p>";
         $body .= "<p><b>Date: </b>Thursday, November 21, 2024.</p>";
         $body .= "<p><b>Time: </b>8:00 am</p>";
+        $body .= "<div style='text-align:center'><img src='$image' alt='{$token_code}.png' style='width:50%' /></div>";
 
         $payload = [
             'username' => $this->fullname,
             'email' => $this->email,
             'subject' => "{$this->fullname}, thank you for registering for the event",
-            'body' => $body,
-            'token_code' => $token_code
+            'body' => $body
         ];
 
         Mail::to($this->email)->send(new GeneralNotificationMail(
