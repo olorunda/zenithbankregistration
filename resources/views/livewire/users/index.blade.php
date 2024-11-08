@@ -348,6 +348,7 @@
                                         Overview of Hybrid Distributed cloud and its capabilities for FSS - IBM" class="text-black">Accelerating Innovation: An
                                         Overview of Hybrid Distributed cloud and its capabilities for FSS - IBM
                                     </option>
+                                    <option value="Transforming Customer Experience with AI - Microsoft" class="text-black">Transforming Customer Experience with AI - Microsoft</option>
                                 </select>
 
                                 <label for="master_classes"
@@ -486,6 +487,6 @@
     @endif
 
     <div class="w-full">
-        <p class="text-white text-center mx-auto text-xs lg:text-sm">21st November, 2024.</p>
+        <p class="text-white text-center mx-auto text-xs lg:text-sm">November 21, 2024.</p>
     </div>
 </main>
