@@ -29,7 +29,7 @@ class Index extends Component
     public $zenith_customer = 'no';
     public string $reason_for_attending='';
     public string $master_classes='';
-    public string $attending_masterclass='no';
+    public string $attending_masterclass='';
     protected $listeners = ['hideOtherClasses'];
     public string $show_masterclasses='display:none';
     public string $error_message='';
