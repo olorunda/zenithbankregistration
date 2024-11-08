@@ -130,6 +130,7 @@ class Index extends Component
         $this->show_consent = false;
     }
 
+
     public function rejectConsent(): void
     {
         $this->consent = 'no';

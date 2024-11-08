@@ -430,6 +430,13 @@
                         <p class="text-white text-sm font-medium text-center">Kindly come along with the QR code to the
                             venue for
                             Entrance.</p>
+
+                        <p class="text-white text-sm font-medium text-center">
+                        <button onclick="window.location.reload()" type="button"
+                                class="bg-red-600 text-white px-8 py-3 rounded-md w-full uppercase font-semibold">
+                            Done
+                        </button>
+                        </p>
                     </div>
 
                 </div>
