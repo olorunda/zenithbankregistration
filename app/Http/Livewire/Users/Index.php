@@ -154,7 +154,7 @@ class Index extends Component
         $body .= "<p><b>Access Code: </b>$token_code.</p>";
         $body .= "<p><b>Date: </b>Thursday, November 21, 2024.</p>";
         $body .= "<p><b>Time: </b>8:00 am</p>";
-        $body .= "<div style='text-align:center'><img src='$image' alt='{$token_code}.png' style='width:50%' /></div>";
+        $body .= "<div style='text-align:center'><img src='https://www.zbtechfair.com/qrcode/$token_code.png' alt='$token_code.png' style='width:50%' /></div>";
 
         $payload = [
             'username' => $this->fullname,
