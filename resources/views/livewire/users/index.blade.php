@@ -485,13 +485,13 @@
                                 </span>
                             </button>
 
-                            <button type="button" wire:click="rejectConsent"
-                                    class="bg-red-600 text-white py-2 px-6 font-semibold rounded-md w-full lg:w-1/2">
-                                No
-                                <span wire:loading wire:target="rejectConsent">
-                                    <i class="fas fa-spinner fa-spin"></i>
-                                </span>
-                            </button>
+{{--                            <button type="button" wire:click="rejectConsent"--}}
+{{--                                    class="bg-red-600 text-white py-2 px-6 font-semibold rounded-md w-full lg:w-1/2">--}}
+{{--                                No--}}
+{{--                                <span wire:loading wire:target="rejectConsent">--}}
+{{--                                    <i class="fas fa-spinner fa-spin"></i>--}}
+{{--                                </span>--}}
+{{--                            </button>--}}
                         </div>
                     </div>
                 </main>
