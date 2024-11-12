@@ -20,7 +20,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::post('/verify_qr', function () {
+Route::any('/verify_qr', function () {
 
     $myArray = json_decode(request()->getContent(), TRUE);
     if ($myArray == '') {
