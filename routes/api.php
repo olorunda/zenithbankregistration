@@ -20,7 +20,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/verify_qr', function () {
+Route::post('/verify_qr', function () {
 
     $code=request()->code;
     $this->details = QrCode::with(['registration', 'attendance'])->where('token', cleaner($code))->first();
