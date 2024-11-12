@@ -22,6 +22,11 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::post('/verify_qr', function () {
 
+    $myArray = json_decode(request()->getContent(), TRUE);
+    if ($myArray == '') {
+        throw new \Exception('Invalid Json Data');
+    }
+    \request()->request->add($myArray);
     $code=request()->code;
     $this->details = QrCode::with(['registration', 'attendance'])->where('token', cleaner($code))->first();
     if (request()->token != '56TYbbbyuebujefn9902b') {
