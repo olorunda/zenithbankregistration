@@ -337,18 +337,23 @@
                                         class="block px-3 pb-2.5 pt-4 w-full text-white bg-transparent rounded-lg appearance-none focus:outline-none peer peer-focus:outline-none focus:ring-0 border-0 focus:border-0 text-xs lg:text-sm">
                                     <option value="" class="text-black">- Select Master Class -</option>
                                     <option value="Enterprise AI Adoption:
-                                        Techniques, Infrastructure, and Impact on Operations - Oracle Technology" class="text-black">Enterprise AI Adoption:
+                                        Techniques, Infrastructure, and Impact on Operations - Oracle Technology"
+                                            class="text-black">Enterprise AI Adoption:
                                         Techniques, Infrastructure, and Impact on Operations - Oracle Technology
                                     </option>
                                     <option value="Advanced Threat Actor Analysis and
-                                        Attribution through AI-Powered Insights - CyberSOC" class="text-black">Advanced Threat Actor Analysis and
+                                        Attribution through AI-Powered Insights - CyberSOC" class="text-black">Advanced
+                                        Threat Actor Analysis and
                                         Attribution through AI-Powered Insights - CyberSOC
                                     </option>
                                     <option value="Accelerating Innovation: An
-                                        Overview of Hybrid Distributed cloud and its capabilities for FSS - IBM" class="text-black">Accelerating Innovation: An
+                                        Overview of Hybrid Distributed cloud and its capabilities for FSS - IBM"
+                                            class="text-black">Accelerating Innovation: An
                                         Overview of Hybrid Distributed cloud and its capabilities for FSS - IBM
                                     </option>
-                                    <option value="Transforming Customer Experience with AI - Microsoft" class="text-black">Transforming Customer Experience with AI - Microsoft</option>
+                                    <option value="Transforming Customer Experience with AI - Microsoft"
+                                            class="text-black">Transforming Customer Experience with AI - Microsoft
+                                    </option>
                                 </select>
 
                                 <label for="master_classes"
@@ -432,10 +437,10 @@
                             Entrance.</p>
 
                         <p class="text-white text-sm font-medium text-center">
-                        <button onclick="window.location.reload()" type="button"
-                                class="bg-red-600 text-white px-8 py-3 rounded-md w-full uppercase font-semibold">
-                            Done
-                        </button>
+                            <button onclick="window.location.reload()" type="button"
+                                    class="bg-red-600 text-white px-8 py-3 rounded-md w-full uppercase font-semibold">
+                                Done
+                            </button>
                         </p>
                     </div>
 
@@ -457,15 +462,16 @@
                 <main class="p-3">
                     <div class="grid grid-cols-1 text-center space-y-5">
                         <div class="space-y-5 mb-2">
-                            <p>Zenith Bank is committed to the highest data privacy standards at all times and will only
-                                use the personal information you have provided for the purpose of this Tech Fair, update
-                                you periodically about our products, services, promo offerings and
-                                other information that may be of interest to you. You may opt out of receiving such
-                                messages at anytime.
+                            <p>Zenith Bank is committed to protecting your privacy.
+                                The information you provide will be used exclusively to process your registration for
+                                the Zenith Tech Fair, to send you related updates about the event and to inform you
+                                about our products and service offerings.
+                                You can opt out of these communications at any time by following the unsubscribe
+                                instructions in our emails.
                             </p>
 
-                            <p>Please confirm your consent to collecting your personal information and receiving such
-                                messages by clicking the <b>Yes</b> option below.
+                            <p> Please confirm your consent to the collection of your personal information and receiving
+                                these messages by clicking the <b>Yes</b> option below.
                             </p>
                         </div>
 
