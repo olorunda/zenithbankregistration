@@ -30,11 +30,12 @@ Route::get('/verify_qr/{code}', function ($code) {
     $this->details = QrCode::with(['registration', 'attendance'])->where('token', cleaner($code))->first();
     if (request()->token != '56TYbbbyuebujefn9902b') {
         return response()->json(['status' => 'error', 'message' => 'Invalid Authn Code , No entry'], 404);
-
     }
+
     if (is_null($this->details)) {
         return response()->json(['status' => 'error', 'message' => 'Invalid QR Code , No entry'], 404);
     }
+
     Attendance::updateOrCreate(['registration_id' => $this->details->registration->id], [
         'registration_id' => $this->details->registration->id,
         'date_admitted' => now()
