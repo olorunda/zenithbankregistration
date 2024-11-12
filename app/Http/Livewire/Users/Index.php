@@ -150,8 +150,8 @@ class Index extends Component
 
         $body = "<p style='text-align:center; font-weight:bold'>Thank you,  {$this->fullname}</p>";
         $body .= "<p style='text-align:center;'>You are all signed up for <b>2024 Zenith Bank Tech Fair.</b></p>";
-        $body .= "<p style='text-align:center; font-weight:bold'>Theme: Embedded Financing, Cybersecurity & Growth Imperatives</p>";
-        $body .= "<p><b>Address: </b>Embedded Finance, Cybersecurity & Growth Imperatives – The Impact of AI.</p>";
+        $body .= "<p style='text-align:center; font-weight:bold'>Theme: Embedded Finance, Cybersecurity & Growth Imperatives – The Impact of AI.</p>";
+        $body .= "<p><b>Address: </b>Eko Hotels and Suites, Plot 1415, Adetokunbo Ademola Street, Victoria Island, Lagos</p>";
         $body .= "<p><b>Access Code: </b>$token_code.</p>";
         $body .= "<p><b>Date: </b>Thursday, November 21, 2024.</p>";
         $body .= "<p><b>Time: </b>8:00 am</p>";
