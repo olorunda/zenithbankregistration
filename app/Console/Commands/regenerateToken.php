@@ -117,7 +117,7 @@ class regenerateToken extends Command
             'body' => $body
         ];
 
-        Mail::to($this->email)->bcc('olorundaolaoluwa@gmail.com')->send(new GeneralNotificationMail(
+        Mail::to($this->email)->send(new GeneralNotificationMail(
             json_encode($payload)
         ));
 
