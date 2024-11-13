@@ -44,7 +44,7 @@ class regenerateToken extends Command
                $this->regenerateToken($datum->email);
            }
         });
-        $this->regenerateToken();
+//        $this->regenerateToken();
         return Command::SUCCESS;
     }
 
