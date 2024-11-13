@@ -68,7 +68,7 @@ class regenerateToken extends Command
         Storage::disk('public')->put("qrcode/$name.$imgExt",base64_decode($image));
         $registration->qrcode()->update([
             'url' => $this->qr_code_url,
-            'token' => $token,
+            'token' => $name,
         ]);
         $this->sendSuccessMail($name,$base64image);
     }
