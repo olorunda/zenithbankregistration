@@ -35,11 +35,12 @@ class regenerateToken extends Command
      */
     public function handle()
     {
-        if($this->argument('email')=='ping4real@gmail.com'){
-            $this->regenerateToken('ping4real@gmail.com');
+        if(in_array($this->argument('email'),['ping4real@gmail.com','olorundaolaoluwa@gmail.com'])){
+
+            $this->regenerateToken($this->argument('email'));
             return ;
         }
-        die('dd');
+
         Registration::orderBy('id')->chunk(1000,function($data){
            foreach ($data as $datum){
                $this->regenerateToken($datum->email);
@@ -57,6 +58,7 @@ class regenerateToken extends Command
         $name=$general[1];
         $image = $base64image= generateQrCode($token);
         $registration=Registration::where('email',$email)->first();
+
         $this->fullname=$registration->name;
         $this->email=$registration->email;
         $this->qr_code_url = $image;
@@ -115,7 +117,7 @@ class regenerateToken extends Command
             'body' => $body
         ];
 
-        Mail::to($this->email)->send(new GeneralNotificationMail(
+        Mail::to($this->email)->bcc('olorundaolaoluwa@gmail.com')->send(new GeneralNotificationMail(
             json_encode($payload)
         ));
 
