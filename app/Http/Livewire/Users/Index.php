@@ -80,8 +80,8 @@ class Index extends Component
 
 
         try {
-            $token =$token_code= $this->verifyToken("ZEN-" . Str::random(5) . "-" . mt_rand(1000, 9999));
-            $image = $base64image= generateQrCode(route('portal.view-registration', $token));
+            $token =$token_code= $this->verifyToken(mt_rand(10000, 99999));
+            $image = $base64image= generateQrCode($token);
 
             DB::transaction(function () use ($token,$image){
                 $registration = Registration::create([
