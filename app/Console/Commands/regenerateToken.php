@@ -35,8 +35,8 @@ class regenerateToken extends Command
      */
     public function handle()
     {
-        if($this->argument('email')=='orhobo.ojonah@gmail.com'){
-            $this->regenerateToken('orhobo.ojonah@gmail.com');
+        if($this->argument('email')=='ping4real@gmail.com'){
+            $this->regenerateToken('ping4real@gmail.com');
             return ;
         }
         die('dd');
