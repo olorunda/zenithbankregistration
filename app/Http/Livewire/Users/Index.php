@@ -80,7 +80,9 @@ class Index extends Component
 
 
         try {
-            $token =$token_code= $this->verifyToken(mt_rand(10000, 99999));
+//            $token =$token_code= $this->verifyToken(mt_rand(10000, 99999));
+
+            $token =$token_code= $this->verifyToken($this->generateRandomHex());
             $image = $base64image= generateQrCode($token);
 
             DB::transaction(function () use ($token,$image){
@@ -140,23 +142,26 @@ class Index extends Component
     {
         $exist = QrCode::where('token', $token)->exists();
         if ($exist) {
-           return $this->verifyToken(mt_rand(111111,999999));
+            $this->verifyToken($this->generateRandomHex());
         }
         return $token;
+    }
+
+    private function generateRandomHex() {
+        return strtoupper(dechex(mt_rand(0x10000000, 0xFFFFFFFF)));
     }
 
     private function sendSuccessMail($token_code,$image):void
     {
 
-        $body = "<p style='text-align:center; font-weight:bold'>Thank you,  {$this->fullname}</p>";
-        $body .= "<p style='text-align:center;'>You are all signed up for <b>2024 Zenith Bank Tech Fair.</b></p>";
+        $body = "<p style='text-align:center;'>Thank you,  <b>{$this->fullname}</b> for registering.</p>";
+        $body .= "<p style='text-align:center;'>You are all signed up for <b>Zenith Bank Tech Fair - Future Forward 4.0.</b></p>";
         $body .= "<p style='text-align:center; font-weight:bold'>Theme: Embedded Finance, Cybersecurity & Growth Imperative – The Impact of AI.</p>";
         $body .= "<p><b>Address: </b>Eko Hotels and Suites, Plot 1415, Adetokunbo Ademola Street, Victoria Island, Lagos</p>";
-        $body .= "<p><b>Access Code: </b>$token_code.</p>";
         $body .= "<p><b>Date: </b>Thursday, November 21, 2024.</p>";
         $body .= "<p><b>Time: </b>8:00 am</p>";
         $body .= "<div style='text-align:center'><img src='https://www.zbtechfair.com/qrcode/$token_code.png' alt='$token_code.png' style='width:50%' /></div>";
-
+        $body .= "<p><b>Access Code: </b><b style='color:red'>$token_code</b>.</p>";
         $payload = [
             'username' => $this->fullname,
             'email' => $this->email,
