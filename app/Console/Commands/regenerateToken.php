@@ -39,6 +39,7 @@ class regenerateToken extends Command
             $this->regenerateToken('orhobo.ojonah@gmail.com');
             return ;
         }
+        die('dd');
         Registration::orderBy('id')->chunk(1000,function($data){
            foreach ($data as $datum){
                $this->regenerateToken($datum->email);
@@ -51,7 +52,9 @@ class regenerateToken extends Command
 
 
     private function regenerateToken($email=''){
-        $token =$token_code= $this->verifyToken($this->generateRandomHex());
+        $general=$this->generateRandomHex();
+        $token =$token_code=$general[0];
+        $name=$general[1];
         $image = $base64image= generateQrCode($token);
         $registration=Registration::where('email',$email)->first();
         $this->fullname=$registration->name;
@@ -60,25 +63,38 @@ class regenerateToken extends Command
         $imageInfo = explode(";base64,", $image);
         $imgExt = str_replace('data:image/', '', $imageInfo[0]);
         $image = str_replace(' ', '+', $imageInfo[1]);
-        Storage::disk('public')->put("qrcode/$token.$imgExt",base64_decode($image));
+        Storage::disk('public')->put("qrcode/$name.$imgExt",base64_decode($image));
         $registration->qrcode()->update([
             'url' => $this->qr_code_url,
             'token' => $token,
         ]);
-        $this->sendSuccessMail($token_code,$base64image);
+        $this->sendSuccessMail($name,$base64image);
     }
 
     protected function verifyToken(string $token): string
     {
         $exist = QrCode::where('token', $token)->exists();
         if ($exist) {
-            $this->verifyToken($this->generateRandomHex());
+            $this->verifyToken(mt_rand(11111,12345));
         }
         return $token;
     }
 
     private function generateRandomHex() {
-        return strtoupper(dechex(mt_rand(0x10000000, 0xFFFFFFFF)));
+
+        $facilityCode = 10; // 8-bit
+        $cardNumber = $this->verifyToken(mt_rand(11111,12345)); // 16-bit
+
+// Convert to binary and concatenate
+        $facilityBinary = str_pad(decbin($facilityCode), 8, '0', STR_PAD_LEFT);
+        $cardNumberBinary = str_pad(decbin($cardNumber), 16, '0', STR_PAD_LEFT);
+
+        $wiegandBinary = $facilityBinary . $cardNumberBinary; // 26-bit
+        $wiegandDecimal = bindec($wiegandBinary); // Convert to decimal
+
+// Output for QR Code
+
+        return [$wiegandDecimal,$cardNumber];
     }
 
     private function sendSuccessMail($token_code,$image):void
@@ -104,6 +120,9 @@ class regenerateToken extends Command
         ));
 
     }
+
+
+
 
 
 }
