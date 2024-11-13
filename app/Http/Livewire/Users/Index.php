@@ -140,7 +140,7 @@ class Index extends Component
     {
         $exist = QrCode::where('token', $token)->exists();
         if ($exist) {
-            $this->verifyToken($token);
+           return $this->verifyToken(mt_rand(111111,999999));
         }
         return $token;
     }

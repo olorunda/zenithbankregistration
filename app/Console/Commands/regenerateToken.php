@@ -72,7 +72,7 @@ class regenerateToken extends Command
     {
         $exist = QrCode::where('token', $token)->exists();
         if ($exist) {
-            $this->verifyToken($token);
+            $this->verifyToken(mt_rand(10000, 99999));
         }
         return $token;
     }
