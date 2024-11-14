@@ -40,7 +40,7 @@ class regenerateToken extends Command
             $this->regenerateToken($this->argument('email'));
             return ;
         }
-die('dd');
+
         Registration::orderBy('id')->chunk(1000,function($data){
            foreach ($data as $datum){
                $this->regenerateToken($datum->email);
