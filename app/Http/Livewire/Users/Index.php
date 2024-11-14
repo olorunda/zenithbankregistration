@@ -64,7 +64,7 @@ class Index extends Component
             'zenith_customer' => ['required', 'string', Rule::in(['yes', 'no'])],
             'reason_for_attending' => ['required'],
             'attending_masterclass' => ['required', Rule::in(['yes', 'no'])],
-//            'master_classes' => ['required:if:attending_masterclass,==,yes']
+            'master_classes' => ['required:if:attending_masterclass,==,yes']
         ]);
 
 
