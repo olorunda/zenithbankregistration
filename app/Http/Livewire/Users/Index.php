@@ -55,7 +55,7 @@ class Index extends Component
     public function createBooking()
     {
 
-        if($this->attending_masterclass=='yes'){
+        if(cleaner($this->attending_masterclass)=='yes'){
             if(cleaner($this->master_classes)==''){
                 $this->error_message='Please Select a Master Class';
                 return;
