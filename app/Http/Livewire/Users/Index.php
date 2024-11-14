@@ -56,7 +56,7 @@ class Index extends Component
     {
 
         if($this->attending_masterclass=='yes'){
-            if($this->master_classes==''){
+            if(cleaner($this->master_classes)==''){
                 $this->error_message='Please Select a Master Class';
                 return;
             }
