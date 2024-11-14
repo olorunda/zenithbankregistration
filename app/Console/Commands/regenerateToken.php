@@ -77,7 +77,7 @@ die('dd');
     {
         $exist = QrCode::where('token', $token)->exists();
         if ($exist) {
-            $this->verifyToken(mt_rand(100000,555555));
+           return $this->verifyToken(mt_rand(100000,555555));
         }
         return $token;
     }
