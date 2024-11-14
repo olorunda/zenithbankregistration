@@ -54,6 +54,13 @@ class Index extends Component
 
     public function createBooking()
     {
+
+        if($this->attending_masterclass=='yes'){
+            if($this->master_classes==''){
+                $this->error_message='Please Select a Master Class';
+                return;
+            }
+        }
 //dd($this->phone);
         $this->validate([
             'email' => ['required', 'string', 'email', 'unique:registrations,email'],
@@ -66,6 +73,7 @@ class Index extends Component
             'attending_masterclass' => ['required', Rule::in(['yes', 'no'])],
             'master_classes' => ['required:if:attending_masterclass,==,yes']
         ]);
+
 
 
         $this->fullname = cleaner($this->firstname.' '.$this->lastname);
