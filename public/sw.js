@@ -2,7 +2,7 @@
 
 importScripts('https://storage.googleapis.com/workbox-cdn/releases/5.1.2/workbox-sw.js');
 
-const CACHE = 'zbtfair-2';
+const CACHE = 'zbtfair-3';
 const PRECACHE_ASSETS=[
   '/',
 ];
