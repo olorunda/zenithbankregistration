@@ -6,7 +6,12 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>@yield('title')</title>
     @livewireStyles
-    @vite(['resources/js/app.js','public/sw.js','public/register-service-worker.js'])
+    @vite(['resources/js/app.js'])
+    <script>
+        if (typeof navigator.serviceWorker !== 'undefined') {
+            navigator.serviceWorker.register('{{asset('sw.js')}}')
+        }
+    </script>
     <link rel="manifest" href="{{asset('manifest.json')}}">
 </head>
 <body class="font-Poppins">

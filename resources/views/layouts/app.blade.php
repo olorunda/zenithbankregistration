@@ -11,7 +11,13 @@
     @livewireStyles
 
     <link rel="manifest" href="{{asset('manifest.json')}}">
-    @vite(['resources/js/app.js','public/sw.js','public/register-service-worker.js'])
+    @vite(['resources/js/app.js'])
+    <script>
+        if (typeof navigator.serviceWorker !== 'undefined') {
+            navigator.serviceWorker.register('{{asset('sw.js')}}')
+        }
+    </script>
+
 </head>
 
 <body class="bg-[url('/assets/images/bg.png')] flex flex-col font-Poppins bg-no-repeat min-h-screen" style="background-size: 100% 100%">
