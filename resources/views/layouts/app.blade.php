@@ -15,6 +15,8 @@
     <script>
         if (typeof navigator.serviceWorker !== 'undefined') {
             navigator.serviceWorker.register('{{asset('sw.js')}}')
+
+            const forceReload = () =>navigator.serviceWorker.getRegistrations().then((registrations) =>Promise.all(registrations.map((r) => r.unregister())),).then(() => window.location.reload())
         }
     </script>
 
