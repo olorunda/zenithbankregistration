@@ -354,10 +354,10 @@
                                     <option value="Transforming Customer Experience with AI - Microsoft"
                                             class="text-black">Transforming Customer Experience with AI - Microsoft
                                     </option> <option value="Generative AI and AI/AML for Financial Services (AWS)"
-                                            class="text-black">Generative AI and AI/AML for Financial Services (AWS)
+                                            class="text-black">Generative AI and AI/AML for Financial Services-AWS
                                     </option>
                                     </option> <option value="Grow Your Business with Google AI(Google)"
-                                            class="text-black">Grow Your Business with Google AI(Google)
+                                            class="text-black">Grow Your Business with Google AI- Google
                                     </option>
                                 </select>
 
