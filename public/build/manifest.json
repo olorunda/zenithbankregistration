@@ -39,6 +39,16 @@
     "file": "assets/flags@2x-9bd00899.png",
     "src": "node_modules/intl-tel-input/build/img/flags@2x.png"
   },
+  "public/register-service-worker.js": {
+    "file": "assets/register-service-worker-cc193bbf.js",
+    "isEntry": true,
+    "src": "public/register-service-worker.js"
+  },
+  "public/sw.js": {
+    "file": "assets/sw-975ae7cc.js",
+    "isEntry": true,
+    "src": "public/sw.js"
+  },
   "resources/js/app.css": {
     "file": "assets/app-f59b661b.css",
     "src": "resources/js/app.css"

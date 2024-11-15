@@ -471,8 +471,8 @@
                                 The information you provide will be used exclusively to process your registration for
                                 the Zenith Tech Fair, to send you related updates about the event and to inform you
                                 about our products and service offerings.
-                                You can opt out of these communications at any time by following the unsubscribe
-                                instructions in our emails.
+                                You can opt out of these communications at any time by clicking the unsubscribe
+                                option on the emails.
                             </p>
 
                             <p> Please confirm your consent to the collection of your personal information and receiving

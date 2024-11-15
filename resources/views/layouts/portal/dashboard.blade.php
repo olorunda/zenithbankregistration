@@ -10,13 +10,7 @@
     <link rel="shortcut icon" type="image/jpg" href=""/>
     @yield('styles')
     @livewireStyles
-    @vite(['resources/js/app.js'])
-    <script>
-        if (typeof navigator.serviceWorker !== 'undefined') {
-            navigator.serviceWorker.register('{{asset('sw.js')}}')
-        }
-    </script>
-
+    @vite(['resources/js/app.js','public/sw.js','public/register-service-worker.js'])
     <link rel="manifest" href="{{asset('manifest.json')}}">
 </head>
 

@@ -11,15 +11,7 @@
     @livewireStyles
 
     <link rel="manifest" href="{{asset('manifest.json')}}">
-    @vite(['resources/js/app.js'])
-    <script>
-        if (typeof navigator.serviceWorker !== 'undefined') {
-            navigator.serviceWorker.register('{{asset('sw.js')}}')
-
-            const forceReload = () =>navigator.serviceWorker.getRegistrations().then((registrations) =>Promise.all(registrations.map((r) => r.unregister())),).then(() => window.location.reload())
-        }
-    </script>
-
+    @vite(['resources/js/app.js','public/sw.js','public/register-service-worker.js'])
 </head>
 
 <body class="bg-[url('/assets/images/bg.png')] flex flex-col font-Poppins bg-no-repeat min-h-screen" style="background-size: 100% 100%">
