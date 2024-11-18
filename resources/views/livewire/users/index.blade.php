@@ -359,6 +359,9 @@
                                     </option> <option value="Grow Your Business with Google AI(Google)"
                                             class="text-black">Grow Your Business with Google AI - Google
                                     </option>
+                                    </option> <option value="Non-Stop Banking, Resilience boosts Intelligence - Huawei"
+                                            class="text-black">Non-Stop Banking, Resilience boosts Intelligence - Huawei
+                                    </option>
                                 </select>
 
                                 <label for="master_classes"
