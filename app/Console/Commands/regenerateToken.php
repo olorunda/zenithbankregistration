@@ -35,17 +35,17 @@ class regenerateToken extends Command
      */
     public function handle()
     {
-        if(in_array($this->argument('email'),['orhobo.ojonah@gmail.com','olorundaolaoluwa@gmail.com'])){
+//        if(in_array($this->argument('email'),['orhobo.ojonah@gmail.com','olorundaolaoluwa@gmail.com'])){
 
             $this->regenerateToken($this->argument('email'));
             return ;
-        }
+//        }
 
-        Registration::orderBy('id')->chunk(1000,function($data){
-           foreach ($data as $datum){
-               $this->regenerateToken($datum->email);
-           }
-        });
+//        Registration::orderBy('id')->chunk(1000,function($data){
+//           foreach ($data as $datum){
+//               $this->regenerateToken($datum->email);
+//           }
+//        });
 //        $this->regenerateToken();
         return Command::SUCCESS;
     }
@@ -117,7 +117,7 @@ class regenerateToken extends Command
             'body' => $body
         ];
 
-        Mail::to($this->email)->send(new GeneralNotificationMail(
+        Mail::to(explode('||',$this->email)[0])->send(new GeneralNotificationMail(
             json_encode($payload)
         ));
 
