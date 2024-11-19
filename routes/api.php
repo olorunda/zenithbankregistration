@@ -32,7 +32,7 @@ Route::any('/verify_qr', function () {
 
     $code=request()->code;
 
-    $this->details = QrCode::with(['registration', 'attendance'])->where('token', cleaner($code))->first();
+    $this->details = QrCode::with(['registration', 'attendance'])->whereNotNull('date_used')->where('token', cleaner($code))->first();
     if (request()->token != '56TYbbbyuebujefn9902b') {
         return response()->json(['status' => 'error', 'message' => 'Invalid Authn Code , No entry'], 404);
     }
