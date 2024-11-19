@@ -31,8 +31,16 @@ class importUser extends Command
     public function handle()
     {
 //        $this->loadData();
-        $qr=QrCode::selectRaw('count(1), token')->groupby('token')->havingRaw('count(1)>1')->get()->toArray();
-        return  print_r($qr);
+        $qr=QrCode::selectRaw('max(id) as id')->groupby('token')->havingRaw('count(1)>1')->pluck('id')->toArray();
+
+        Registration::whereIn('id',QrCode::whereIn('id',$qr)->pluck('registration_id')->toArray())->orderBy('id')->chunk(100,function ($data){
+            foreach($data as $datum){
+                Artisan::call('regenerate:token',['email'=>$datum->email]);
+            }
+
+        });
+
+
         return Command::SUCCESS;
     }
 
