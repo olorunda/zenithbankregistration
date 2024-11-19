@@ -46,6 +46,11 @@ Route::any('/verify_qr', function () {
         'date_admitted' => now()
     ]);
 
+    $this->details->update([
+        'date_used' => now()->format('Y-m-d')
+    ]);
+
+
     return response()->json(['status' => 'success', 'message' => 'Permission Granted']);
 
 
