@@ -31,7 +31,7 @@ class importUser extends Command
     public function handle()
     {
 //        $this->loadData();
-        $qr=QrCode::selectRaw('count(1), token')->groupby('token')->having('count(1)>1')->get();
+        $qr=QrCode::selectRaw('count(1), tken')->groupby('token')->havingRaw('count(1)>1')->get();
 dd($qr);
         return Command::SUCCESS;
     }
