@@ -2,6 +2,7 @@
 
 namespace App\Console\Commands;
 
+use App\Models\QrCode;
 use App\Models\Registration;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Artisan;
@@ -29,7 +30,9 @@ class importUser extends Command
      */
     public function handle()
     {
-        $this->loadData();
+//        $this->loadData();
+        $qr=QrCode::selectRaw('count(1), token')->groupby('token')->having('count(1)>1')->get();
+dd($qr);
         return Command::SUCCESS;
     }
 
@@ -60,6 +63,7 @@ class importUser extends Command
                     'master_classes' => "",
                     'is_zenith_customer' =>'no'
                 ];
+
                 $registration= Registration::updateOrCreate($data_to_insert);
                 $registration->qrcode()->create([
                     'url' => '',
