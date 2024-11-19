@@ -21,8 +21,8 @@ class Dashboard extends LivewireDatatable
         return [
 
 
-            Column::callback(['qr_codes.token'], function ($token) {
-                return view('table-actions', ['token' => $token]);
+            Column::callback(['qr_codes.id'], function ($id) {
+                return view('table-actions', ['id' => $id]);
             })->excludeFromExport()->unsortable()->label('Action'),
 
             Column::name("name")

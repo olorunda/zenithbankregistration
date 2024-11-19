@@ -8,9 +8,9 @@ use App\Models\Attendance;
 
 class ViewDetails extends Component
 {
-    public function mount($token)
+    public function mount($id)
     {
-        $this->details = QrCode::with(['registration', 'attendance'])->where('token', cleaner($token))->first();
+        $this->details = QrCode::with(['registration', 'attendance'])->where('id', cleaner($id))->first();
         abort_if(!$this->details, 404);
     }
 

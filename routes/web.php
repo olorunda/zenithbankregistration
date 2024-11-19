@@ -40,7 +40,7 @@ Route::group(['namespace' => '\App\Http\Livewire'], function () {
 
             Route::get('/dashboard', \Portal\Dashboard::class)->name('dashboard');
 
-            Route::get('/registration/view/{token}', \Portal\ViewDetails::class)->name('view-registration');
+            Route::get('/registration/view/{id}', \Portal\ViewDetails::class)->name('view-registration');
 
             Route::get('/attendances', \Portal\Attendances::class)->name('attendances');
 
