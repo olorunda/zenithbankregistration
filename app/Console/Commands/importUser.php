@@ -36,7 +36,7 @@ class importUser extends Command
     public function loadData()
     {
         // Open the CSV file for reading
-        $csvFile = 'Student List.csv';
+        $csvFile = 'Student List2.csv';
         if (($handle = fopen($csvFile, 'r')) !== FALSE) {
 
             // Read the header row first (if necessary)
