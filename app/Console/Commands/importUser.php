@@ -55,7 +55,7 @@ class importUser extends Command
     public function loadData()
     {
         // Open the CSV file for reading
-        $csvFile = 'Update.csv';
+        $csvFile = 'New Student List.csv';
         if (($handle = fopen($csvFile, 'r')) !== FALSE) {
 
             // Read the header row first (if necessary)
@@ -81,11 +81,11 @@ class importUser extends Command
                         'is_zenith_customer' => 'no'
                     ];
 //dd($data_to_insert);
-                    $registration = Registration::updateOrCreate(['name' => $csvData->Name], $data_to_insert);
-//                    $registration->qrcode()->create([
-//                        'url' => '',
-//                        'token' => '',
-//                    ]);
+                    $registration = Registration::updateOrCreate($data_to_insert);
+                    $registration->qrcode()->create([
+                        'url' => '',
+                        'token' => '',
+                    ]);
                     Artisan::call('regenerate:token', ['email' => $data_to_insert['email']]);
                 }
             }
