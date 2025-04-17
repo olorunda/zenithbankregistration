@@ -17,18 +17,24 @@
             navigator.serviceWorker.register('{{asset('sw.js')}}')
         }
     </script>
-
+    <style>
+        .bg-pattern {
+            background-image: url('https://images.unsplash.com/photo-1554469384-e58fac16e23a?q=80&w=2787&auto=format&fit=crop&ixlib=rb-4.0.3');
+            background-position: left center;
+            background-repeat: no-repeat;
+            background-size: contain;
+            opacity: 0.1;
+        }
+    </style>
 </head>
+<body class="min-h-screen bg-white relative overflow-hidden">
+<!-- Background Pattern -->
+<div class="bg-pattern fixed inset-0 z-0"></div>
 
-<body class="bg-[url('/assets/images/bg.png')] flex flex-col font-Poppins bg-no-repeat min-h-screen" style="background-size: 100% 100%">
-
-    <nav class="flex items-center w-full justify-end">
-        <div class="py-4 px-2 lg:px-8 lg:py-8">
-            <a href="{{ route('welcome') }}" class="">
-                <img src="/assets/images/logo.svg" alt="" class="w-12 lg:w-24 mx-auto">
-            </a>
-        </div>
-    </nav>
+<!-- Logo -->
+<div class="absolute top-4 right-4">
+    <img src="https://veritasregistrars.com/wp-content/uploads/2021/12/Veritas-Logo.png" alt="Veritas Registrars" class="h-12">
+</div>
 
     @yield('content')
 

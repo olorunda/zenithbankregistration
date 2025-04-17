@@ -3,7 +3,10 @@
 namespace App\Http\Livewire\Users;
 
 use App\Models\QrCode;
+use App\Models\ValidatedUser;
 use Illuminate\Support\Facades\Storage;
+use Jantinnerezo\LivewireAlert\LivewireAlert;
+
 use Livewire\Component;
 use Illuminate\Support\Str;
 use App\Models\Registration;
@@ -16,14 +19,18 @@ use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary;
 
 class Index extends Component
 {
+    use LivewireAlert;
     public bool $show_consent = true;
+
     public $step_one = true;
     public $final_step = false;
-    public $firstname,$lastname;
+    public $firstname,$lastname,$ran_error_message;
     public $company;
+    public $validated_ran=false;
     public $job_title;
-    public $phone;
+    public $phone,$name;
     public $email;
+    public $ran='';
     public $qr_code_url;
     public $consent;
     public $zenith_customer = 'no';
@@ -37,6 +44,8 @@ class Index extends Component
      * @var mixed|string
      */
     public string $token_show='';
+    public string $consent_error_message;
+    private $data_val;
 
     public function render()
     {
@@ -51,41 +60,55 @@ class Index extends Component
         }
     }
 
+    public function validateRan()
+    {
+
+        $this->data_val=ValidatedUser::where('ran',$this->ran)->first();
+
+        if(!$this->data_val){
+            $this->ran_error_message='Invalid Ran Code Please Try Again with a correct ran code';
+            return;
+        }
+
+        $this->validated_ran=true;
+        $this->name=$this->data_val->name;
+        $this->email=$this->data_val->emails;
+
+    }
+
 
     public function createBooking()
     {
 
-        if(cleaner($this->attending_masterclass)=='yes'){
-            if(cleaner($this->master_classes)==''){
-                $this->error_message='Please Select a Master Class';
-                return;
-            }
-        }
+
 //dd($this->phone);
         $this->validate([
             'email' => ['required', 'string', 'email', 'unique:registrations,email'],
-            'firstname' => ['required', 'string', 'min:3'],
-            'lastname' => ['required', 'string', 'min:3'],
+            'name' => ['required', 'string', 'min:3'],
 //            'company' => ['required', 'string', 'min:3'],
-            'phone' => ['required', 'unique:registrations,phone'],
-            'zenith_customer' => ['required', 'string', Rule::in(['yes', 'no'])],
-            'reason_for_attending' => ['required'],
-            'attending_masterclass' => ['required', Rule::in(['yes', 'no'])],
+
+
 //            'master_classes' => ['required:if:attending_masterclass,==,yes']
         ]);
 
 
+        $this->data_val=ValidatedUser::where('ran',$this->ran)->first();
 
-        $this->fullname = cleaner($this->firstname.' '.$this->lastname);
+        $this->fullname = cleaner($this->name);
         $this->email = cleaner($this->email);
-        $this->phone = cleaner($this->phone);
 //        $this->company = cleaner($this->company);
-        $this->consent = cleaner($this->consent);
-        $this->zenith_customer = cleaner($this->zenith_customer);
-        $this->reason_for_attending = cleaner($this->reason_for_attending);
-        $this->attending_masterclass = cleaner($this->attending_masterclass);
-        $this->master_classes = cleaner($this->master_classes);
-
+        $this->consent = ($this->consent);
+        $this->error_message='';
+        if(!$this->consent){
+            $this->error_message='Please Agree to the terms and conditions before submitting';
+            return;
+        }
+        if(!$this->data_val){
+            $this->ran_error_message='Invalid Ran Code Please Try Again with a correct ran code';
+            $this->name='';
+$this->email='';
+            return;
+        }
 
         try {
 //            $token =$token_code= $this->verifyToken(mt_rand(10000, 99999));
@@ -97,19 +120,19 @@ class Index extends Component
             $image = $base64image= generateQrCode($token);
 
             DB::transaction(function () use ($token,$image){
-                $registration = Registration::create([
+                $registration = Registration::updateOrCreate(['email' => $this->email],[
                     'name' => $this->fullname,
                     'email' => $this->email,
-                    'phone' => $this->phone,
+                    'phone' => $this->data_val->phone_num,
                     'company' => '',
-                    'consent' => $this->consent,
-                    'reason_for_attending' => $this->reason_for_attending,
-                    'attending_masterclass' => $this->attending_masterclass,
-                    'master_classes' => $this->master_classes,
-                    'is_zenith_customer' => $this->zenith_customer
+                    'consent' => $this->consent ? 'yes' :'no',
+                    'reason_for_attending' => 'N/A',
+                    'attending_masterclass' => 'no',
+                    'master_classes' => 'no',
+                    'is_zenith_customer' => 'no'
                 ]);
 
-              $this->qr_code_url = $image;//Cloudinary::upload($image)->getSecurePath();
+                $this->qr_code_url = $image;//Cloudinary::upload($image)->getSecurePath();
                 $this->token_show=$token;
                 $imageInfo = explode(";base64,", $image);
                 $imgExt = str_replace('data:image/', '', $imageInfo[0]);
@@ -126,12 +149,12 @@ class Index extends Component
 
             $this->step_one = false;
             $this->final_step = true;
-           $this->sendSuccessMail($token_code,$base64image);
+//           $this->sendSuccessMail($token_code,$base64image);
 
         } catch (\Exception $ex) {
 
             \Log::error("Error Saving Registration:" . json_encode($ex->getMessage()));
-            $this->error_message='Whoops!!! Something went wrong...';
+            $this->error_message='Whoops!!! Something went wrong...'.$ex->getMessage();
             return;
         }
     }
