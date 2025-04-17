@@ -19,11 +19,11 @@
     </script>
     <style>
         .bg-pattern {
-            background-image: url('https://images.unsplash.com/photo-1554469384-e58fac16e23a?q=80&w=2787&auto=format&fit=crop&ixlib=rb-4.0.3');
-            background-position: left center;
+            background-image: url('{{asset('assets/images/vr_bg.png')}}');
+            /*background-position: left center;*/
             background-repeat: no-repeat;
-            background-size: contain;
-            opacity: 0.1;
+            background-size: cover;
+            opacity: 0.5;
         }
     </style>
 </head>
@@ -33,7 +33,7 @@
 
 <!-- Logo -->
 <div class="absolute top-4 right-4">
-    <img src="https://veritasregistrars.com/wp-content/uploads/2021/12/Veritas-Logo.png" alt="Veritas Registrars" class="h-12">
+    <img src="{{asset('assets/images/vr_logo.png')}}" alt="Veritas Registrars" class="h-12">
 </div>
 
     @yield('content')
