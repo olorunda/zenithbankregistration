@@ -106,11 +106,12 @@ class Index extends Component
         if(!$this->data_val){
             $this->ran_error_message='Invalid Ran Code Please Try Again with a correct ran code';
             $this->name='';
-$this->email='';
+            $this->email='';
             return;
         }
 
         try {
+            $this->ran_error_message='';
 //            $token =$token_code= $this->verifyToken(mt_rand(10000, 99999));
 
 //            $token =$token_code= $this->verifyToken($this->generateRandomHex());
