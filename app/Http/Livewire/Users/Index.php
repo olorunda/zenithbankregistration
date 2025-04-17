@@ -69,7 +69,7 @@ class Index extends Component
             $this->ran_error_message='Invalid Ran Code Please Try Again with a correct ran code';
             return;
         }
-
+        $this->ran_error_message='';
         $this->validated_ran=true;
         $this->name=$this->data_val->name;
         $this->email=$this->data_val->emails;
