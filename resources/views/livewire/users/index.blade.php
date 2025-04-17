@@ -47,7 +47,7 @@
                         Name*
                     </label>
                     <input wire:model.defer="name"
-                            type="text"
+                            type="text" readonly
                             class="w-full border border-gray-300 rounded px-4 py-2 focus:outline-none focus:border-red-500"
                             placeholder="Enter Name"
                     />
@@ -61,7 +61,7 @@
                         Email*
                     </label>
                     <input wire:model.defer="email"
-                            type="email"
+                            type="email" readonly
                             class="w-full border border-gray-300 rounded px-4 py-2 focus:outline-none focus:border-red-500"
                             placeholder="Enter Email"
                     />
