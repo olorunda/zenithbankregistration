@@ -13,7 +13,7 @@
             <div style="{{$show_consent}}" class="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-50 z-50">
                 <div class="bg-white rounded-lg p-4 lg:p-6 w-4/5 lg:w-1/2">
                     <header class="text-left py-4 px-2">
-                        <h2 class="font-semibold text-xl text-[#222222] text-center"> {{$show_consent}}Privacy Policy</h2>
+                        <h2 class="font-semibold text-xl text-[#222222] text-center">Privacy Policy</h2>
                         <p class="text-xs text-gray-500 font-light"></p>
                     </header>
                     <main class="p-3">
@@ -21,7 +21,7 @@
                             <div class="space-y-5 mb-2">
                                 <p>{{env('APP_NAME')}} is committed to protecting your privacy.
                                     The information you provide will be used exclusively to process your registration for
-                                    the Zenith Tech Fair, to send you related updates about the event and to inform you
+                                    the  34th Zenith Bank Annual General Meeting, to send you related updates about the event and to inform you
                                     about our products and service offerings.
                                     You can opt out of these communications at any time by clicking the unsubscribe
                                     option on the emails.
