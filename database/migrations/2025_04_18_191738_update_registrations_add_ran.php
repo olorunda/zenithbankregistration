@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::table('registrations', function (Blueprint $table) {
             //
-            $table->string('ran')->unique();
+            $table->string('ran')->default('NA')->unique();
         });
     }
 
