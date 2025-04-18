@@ -21,11 +21,16 @@ class Registration extends Model
         'reason_for_attending',
         'attending_masterclass',
         'master_classes',
-        'is_zenith_customer'
+        'is_zenith_customer','ran'
     ];
 
     public function qrcode(): HasOne
     {
         return $this->hasOne(QrCode::class);
+    }
+
+    public function validateduser()
+    {
+        return $this->belongsTo(ValidatedUser::class,'emails','email');
     }
 }

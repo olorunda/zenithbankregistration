@@ -1,4 +1,4 @@
-@section('title', 'Zenith Bank Tech Fair 4.0::Details')
+@section('title', 'Annual General Meeting::Details')
 <div class="container mx-auto px-6 py-8">
     <div class="grid grid-cols-1 lg:gap-x-8 gap-y-5 mb-4">
         <div class="flex items-left">
@@ -97,9 +97,9 @@
                 </div>
 
                 <div class="border-b-2 border-gray-300 pb-4 mb-4">
-                    <h6 class="text-left text-[#544837] font-semibold mb-2">Is Zenith Customer:</h6>
+                    <h6 class="text-left text-[#544837] font-semibold mb-2">RAN:</h6>
                     <div class="text-left">
-                        {{ $details->registration->is_zenith_customer }}
+                        {{ $details->registration->ran }}
                     </div>
                 </div>
 

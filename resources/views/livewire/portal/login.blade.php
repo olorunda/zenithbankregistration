@@ -1,11 +1,11 @@
-@section('title', 'Zenith Bank Tech Fair 4.0::Login')
+@section('title', 'Annual General Meeting::Login')
 <div class="flex flex-col h-screen font-Poppins bg-gradient-to-b from-red-300 to-blue-200">
     <div class="grid place-items-center mx-2 my-20 sm:my-auto">
         <div class="w-11/12 p-12 sm:w-8/12 md:w-6/12 lg:w-5/12 2xl:w-4/12
             px-6 py-10 sm:px-10 sm:py-6
             bg-white rounded-lg shadow-md lg:shadow-lg">
             <div class="text-center mb-5">
-                <img src="{{ asset('assets/images/logo.png') }}" alt="" class="mx-auto w-24">
+                <img src="{{asset('assets/images/vr_logo.png')}}" alt="" class="mx-auto w-24">
             </div>
             <form class="space-y-5" method="POST" wire:submit.prevent="authenticateUser">
                 {{ csrf_field() }}

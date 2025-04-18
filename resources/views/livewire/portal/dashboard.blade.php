@@ -1,4 +1,4 @@
-@section('title', 'Zenith Bank Tech Fair 4.0::Dashboard')
+@section('title', 'Annual General Meeting::Dashboard')
 <div class="container mx-auto px-6 py-8">
     <div class="grid grid-cols-1 lg:gap-x-8 gap-y-5 mb-4">
         <div>

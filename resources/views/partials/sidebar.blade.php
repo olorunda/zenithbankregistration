@@ -3,7 +3,7 @@
     <div class="flex items-center justify-center mt-8">
         <div class="flex items-center">
             <a href="{{ route('portal.dashboard') }}" wire:navigate>
-                <img src="/assets/images/logo.png" alt="" class="w-16">
+                <img src="{{asset('assets/images/vr_logo.png')}}" alt="" class="w-16">
             </a>
         </div>
     </div>

@@ -126,6 +126,7 @@ class Index extends Component
                     'name' => $this->fullname,
                     'email' => $this->email,
                     'phone' => $this->data_val->phone_num,
+                    'ran' => $this->data_val->ran,
                     'company' => '',
                     'consent' => $this->consent ? 'yes' :'no',
                     'reason_for_attending' => 'N/A',
@@ -204,14 +205,14 @@ class Index extends Component
 
     private function sendSuccessMail($token_code,$image):void
     {
-
-        $body = "<p style='text-align:center;'>Thank you,  <b>{$this->fullname}</b> for registering.</p>";
-        $body .= "<p style='text-align:center;'>You are all signed up for <b>Zenith Bank Tech Fair - Future Forward 4.0.</b></p>";
-        $body .= "<p style='text-align:center; font-weight:bold'>Theme: Embedded Finance, Cybersecurity & Growth Imperative – The Impact of AI.</p>";
-        $body .= "<p><b>Address: </b>Eko Hotels and Suites, Plot 1415, Adetokunbo Ademola Street, Victoria Island, Lagos</p>";
-        $body .= "<p><b>Date: </b>Thursday, November 21, 2024.</p>";
-        $body .= "<p><b>Time: </b>8:00 am</p>";
-        $body .= "<div style='text-align:center'><img src='https://www.zbtechfair.com/qrcode/$token_code.png' alt='$token_code.png' style='width:50%' /></div>";
+        $body=
+        $body = "<p>Thank you for registering for the <strong>Annual General Meeting</strong> of <strong>Zenith Bank Plc</strong>";
+//        $body .= "<p style='text-align:center;'>You are all signed up for <b>Zenith Bank Tech Fair - Future Forward 4.0.</b></p>";
+//        $body .= "<p style='text-align:center; font-weight:bold'>Theme: Embedded Finance, Cybersecurity & Growth Imperative – The Impact of AI.</p>";
+        $body .= "<p><b>Address: </b>Civic Towers, Ozumba Mbadiwe Avenue, Victoria Island, Lagos</p>";
+        $body .= "<p><b>Date: </b>29th April 2025.</p>";
+        $body .= "<p><b>Time: </b>9:00 am</p>";
+        $body .= "<div style='text-align:center'><img src='https://34thzbagm.verimeetings.com/qrcode/$token_code.png' alt='$token_code.png' style='width:50%' /></div>";
         $body .= "<p><b>Access Code: </b><b style='color:red'>$token_code</b>.</p>";
         $payload = [
             'username' => $this->fullname,
