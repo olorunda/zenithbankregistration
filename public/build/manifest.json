@@ -50,7 +50,7 @@
     "src": "public/sw.js"
   },
   "resources/js/app.css": {
-    "file": "assets/app-fbf4d0bc.css",
+    "file": "assets/app-e447a148.css",
     "src": "resources/js/app.css"
   },
   "resources/js/app.js": {
@@ -67,9 +67,9 @@
       "assets/flags@2x-9bd00899.png"
     ],
     "css": [
-      "assets/app-fbf4d0bc.css"
+      "assets/app-e447a148.css"
     ],
-    "file": "assets/app-19c62205.js",
+    "file": "assets/app-3d24555b.js",
     "isEntry": true,
     "src": "resources/js/app.js"
   }

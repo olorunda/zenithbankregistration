@@ -19,8 +19,8 @@ use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary;
 
 class Index extends Component
 {
-    use LivewireAlert;
-    public bool $show_consent = true;
+
+    public  $show_consent = 'display:none';
 
     public $step_one = true;
     public $final_step = false;
@@ -46,6 +46,7 @@ class Index extends Component
     public string $token_show='';
     public string $consent_error_message;
     private $data_val;
+    public string $close_terms_and_condition='';
 
     public function render()
     {
@@ -160,18 +161,19 @@ class Index extends Component
         }
     }
 
-
-    public function attestConsent(): void
+    public function showConsent()
     {
-        $this->consent = 'yes';
-        $this->show_consent = false;
+        $this->show_consent='';
+    }
+
+    public function closeTermsAndCondition(): void
+    {
+        $this->close_terms_and_condition = 'yes';
+        $this->show_consent = 'display:none';
     }
 
 
-    public function rejectConsent(): void
-    {
-        $this->consent = 'no';
-    }
+
 
     protected function verifyToken(string $token): string
     {

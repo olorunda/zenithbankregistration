@@ -9,7 +9,44 @@
         </div>
 
         @if($step_one)
-        <!-- Form Card -->
+
+            <div style="{{$show_consent}}" class="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-50 z-50">
+                <div class="bg-white rounded-lg p-4 lg:p-6 w-4/5 lg:w-1/2">
+                    <header class="text-left py-4 px-2">
+                        <h2 class="font-semibold text-xl text-[#222222] text-center"> {{$show_consent}}Privacy Policy</h2>
+                        <p class="text-xs text-gray-500 font-light"></p>
+                    </header>
+                    <main class="p-3">
+                        <div class="grid grid-cols-1 text-center space-y-5">
+                            <div class="space-y-5 mb-2">
+                                <p>{{env('APP_NAME')}} is committed to protecting your privacy.
+                                    The information you provide will be used exclusively to process your registration for
+                                    the Zenith Tech Fair, to send you related updates about the event and to inform you
+                                    about our products and service offerings.
+                                    You can opt out of these communications at any time by clicking the unsubscribe
+                                    option on the emails.
+                                </p>
+
+                            </div>
+
+                            <div
+                                    class="block lg:flex lg:justify-around lg:space-x-5 space-y-5 lg:space-y-0 lg:items-center">
+                                <button type="button" wire:click="closeTermsAndCondition"
+                                        class="bg-white border border-red-600 text-red-600 py-2 px-6 font-semibold rounded-md w-full lg:w-1/2">
+                                    Close
+                                    <span wire:loading wire:target="closeTermsAndCondition">
+                                    <i class="fas fa-spinner fa-spin"></i>
+                                </span>
+                                </button>
+
+
+                            </div>
+                        </div>
+                    </main>
+                </div>
+            </div>
+
+            <!-- Form Card -->
         <div class="bg-red-50/80 rounded-lg p-8">
             <form class="space-y-6" method="POST" wire:submit.prevent="createBooking">
                 <!-- RAN Input -->
@@ -77,7 +114,7 @@
                             class="h-4 w-4 rounded border-gray-300 text-red-600 focus:ring-red-500"
                     />
                     <label class="ml-2 block text-sm text-gray-700">
-                        I confirm I have read Privacy Policy and I agree to the use of my data
+                         I confirm I have read Privacy Policy and I agree to the use of my data , click <a style="color: blue" href="#" wire:click.prevent="showConsent">here</a> to read the terms and condition
                     </label>
 
                 </div>
@@ -99,6 +136,9 @@
     </div>
 </div>
 @endif
+
+
+
 
 @if ($final_step)
     <div class="">
