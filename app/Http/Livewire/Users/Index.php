@@ -152,7 +152,7 @@ class Index extends Component
 
             $this->step_one = false;
             $this->final_step = true;
-//           $this->sendSuccessMail($token_code,$base64image);
+            $this->sendSuccessMail($token_code,$base64image);
 
         } catch (\Exception $ex) {
 
@@ -205,7 +205,7 @@ class Index extends Component
 
     private function sendSuccessMail($token_code,$image):void
     {
-        $body=
+//        $body=
         $body = "<p>Thank you for registering for the <strong>Annual General Meeting</strong> of <strong>Zenith Bank Plc</strong>";
 //        $body .= "<p style='text-align:center;'>You are all signed up for <b>Zenith Bank Tech Fair - Future Forward 4.0.</b></p>";
 //        $body .= "<p style='text-align:center; font-weight:bold'>Theme: Embedded Finance, Cybersecurity & Growth Imperative – The Impact of AI.</p>";
