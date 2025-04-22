@@ -84,7 +84,7 @@ class Index extends Component
 
 //dd($this->phone);
         $this->validate([
-            'email' => ['required', 'string', 'email', 'unique:registrations,email'],
+            'email' => ['required', 'string', 'email'],
             'name' => ['required', 'string', 'min:3'],
 //            'company' => ['required', 'string', 'min:3'],
 
