@@ -1,4 +1,4 @@
-@section('title', 'Zenith Tech Fair 2024 4.0::Registration')
+@section('title', '34th Zenith Bank::Registration')
 <main class="flex-grow p-4 lg:max-w-3xl lg:mx-auto w-full">
     <div class="bg-[#111010] bg-opacity-50 backdrop-filter backdrop-blur-md rounded-lg">
         <div class="px-4 py-8 lg:px-4 lg:py-16 mb-4 lg:mb-12">

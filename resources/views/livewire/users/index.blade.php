@@ -1,5 +1,4 @@
-@section('title', 'Zenith Tech Fair 2024 4.0::Registration')
-@section('title', 'Zenith Tech Fair 2024 4.0::Registration')
+@section('title', '34th Zenith Bank::Registration')
 <div class="relative z-10 min-h-screen flex items-center justify-center p-4">
     <div class="max-w-xl w-full">
         <!-- Header -->
