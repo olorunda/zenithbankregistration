@@ -16,8 +16,8 @@ return new class extends Migration
         Schema::create('registrations', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('email')->unique();
-            $table->string('phone')->unique();
+            $table->string('email');
+            $table->string('phone');
             $table->string('ran')->unique();
 //            $table->string('company', 60);
             $table->string('reason_for_attending', 500);
