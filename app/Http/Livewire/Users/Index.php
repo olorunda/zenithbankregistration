@@ -64,7 +64,7 @@ class Index extends Component
     public function validateRan()
     {
 
-        $this->data_val=ValidatedUser::where('ran',$this->ran)->first();
+        $this->data_val=ValidatedUser::where('ran',$this->ran)->orderby('id','desc')->first();
 
         if(!$this->data_val){
             $this->ran_error_message='Invalid Ran Code Please Try Again with a correct ran code';
@@ -93,7 +93,7 @@ class Index extends Component
         ]);
 
 
-        $this->data_val=ValidatedUser::where('ran',$this->ran)->first();
+        $this->data_val=ValidatedUser::where('ran',$this->ran)->orderby('id','desc')->first();
 
         $this->fullname = cleaner($this->name);
         $this->email = cleaner($this->email);
