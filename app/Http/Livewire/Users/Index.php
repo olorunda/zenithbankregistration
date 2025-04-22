@@ -125,7 +125,7 @@ class Index extends Component
                 $registration = Registration::updateOrCreate(['email' => $this->email],[
                     'name' => $this->fullname,
                     'email' => $this->email,
-                    'phone' => $this->data_val->phone_num,
+                    'phone' => $this->data_val->phone_num.mt_rand(11111,22222),
                     'ran' => $this->data_val->ran,
                     'company' => '',
                     'consent' => $this->consent ? 'yes' :'no',

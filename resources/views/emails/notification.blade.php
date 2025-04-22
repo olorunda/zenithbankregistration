@@ -1,6 +1,6 @@
 @component('mail::message')
 <div style="text-align: center; margin-bottom: 5%">
-    <img  src="https://zbtechfair.com/assets/images/logo_black.png"  alt="">
+    <img style="width: 100px; height:100px" src="https://34thzbagm.verimeetings.com/assets/images/vr_logo.png"  alt="">
 </div>
 
 {!! $data->body !!}

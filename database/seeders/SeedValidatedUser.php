@@ -21,7 +21,7 @@ class SeedValidatedUser extends Seeder
 
     public function import()
     {
-        $csvFile = fopen('C:\Users\ADMIN\PhpstormProjects\zenithbank\database\seeders\validated_users.csv', 'r'); // Path to your CSV file
+        $csvFile = fopen('C:\Users\ADMIN\PhpstormProjects\zenithbank\database\seeders\data.csv', 'r'); // Path to your CSV file
         $data_to_import=[];
 // Check if the file is opened successfully
         if ($csvFile !== false) {
@@ -34,11 +34,11 @@ class SeedValidatedUser extends Seeder
                 $data = array_combine($headers, $row);
                 $data_to_import[]=[
                     'ran'=>$data['RAN'],
-                    'chn'=>$data['CHN'],
-                    'name'=>$data['NAME'],
-                    'holdings'=>$data['HOLDINGS'],
-                    'address'=>$data['ADDRESS'],
-                    'phone_num'=>$data['PHONE NO'],
+                    'chn'=>$data['CHN'] ?? '.',
+                    'name'=>$data['NAME'] ?? '.',
+                    'holdings'=>$data['HOLDINGS'] ?? '.',
+                    'address'=>$data['ADDRESS'] ?? '.',
+                    'phone_num'=>$data['PHONE NO'] ?? '.',
                     'emails'=>$data['EMAILS'],
                     ];
                 if($i%1000==0){
