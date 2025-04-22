@@ -21,7 +21,7 @@ class SeedValidatedUser extends Seeder
 
     public function import()
     {
-        $csvFile = fopen('C:\Users\ADMIN\PhpstormProjects\zenithbank\database\seeders\data.csv', 'r'); // Path to your CSV file
+        $csvFile = fopen('/var/www/html/projects/zenithbankregistration/database/seeders/data.csv', 'r'); // Path to your CSV file
         $data_to_import=[];
 // Check if the file is opened successfully
         if ($csvFile !== false) {
