@@ -6,6 +6,8 @@ use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\NetcoreTransport;
 use Illuminate\Mail\MailManager;
+use Symfony\Component\Mailer\Transport\Dsn;
+use Symfony\Component\HttpClient\HttpClient;
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -27,7 +29,10 @@ class AppServiceProvider extends ServiceProvider
     {
         //
         Mail::extend('netcore', function ($config) {
-            return new NetcoreTransport($config['api_key']);
+            return new NetcoreTransport(
+                $config['api_key'],
+                HttpClient::create()
+            );
         });
     }
 }

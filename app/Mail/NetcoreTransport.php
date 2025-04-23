@@ -1,53 +1,73 @@
 <?php
-
 namespace App\Mail;
 
-use Illuminate\Mail\Transport\Transport;
-use Swift_Mime_SimpleMessage;
-use Illuminate\Support\Facades\Http;
+use Symfony\Component\Mailer\Transport\AbstractTransport;
+use Symfony\Component\Mailer\SentMessage;
+use Symfony\Component\Mime\RawMessage;
+use Symfony\Component\Mime\Email;
+use Symfony\Contracts\HttpClient\Exception\ClientExceptionInterface;
+use Symfony\Contracts\HttpClient\Exception\RedirectionExceptionInterface;
+use Symfony\Contracts\HttpClient\Exception\ServerExceptionInterface;
+use Symfony\Contracts\HttpClient\Exception\TransportExceptionInterface;
+use Symfony\Contracts\HttpClient\HttpClientInterface;
+use Symfony\Component\Mailer\Exception\TransportException;
 
-class NetcoreTransport extends Transport
+class NetcoreTransport extends AbstractTransport
 {
-    protected $apiKey;
+    protected string $apiKey;
+    protected HttpClientInterface $client;
 
-    public function __construct($apiKey)
+    public function __construct(string $apiKey, HttpClientInterface $client)
     {
         $this->apiKey = $apiKey;
+        $this->client = $client;
+        parent::__construct();
     }
 
-    public function send(Swift_Mime_SimpleMessage $message, &$failedRecipients = null)
+    /**
+     * @throws TransportExceptionInterface
+     * @throws ServerExceptionInterface
+     * @throws RedirectionExceptionInterface
+     * @throws ClientExceptionInterface
+     */
+    protected function doSend(RawMessage|SentMessage $message): void
     {
-        $this->beforeSendPerformed($message);
+        if (!$message instanceof Email) {
+            throw new \LogicException('Only Email messages are supported.');
+        }
 
-        $from = array_keys($message->getFrom())[0];
-        $to = array_keys($message->getTo())[0];
-        $subject = $message->getSubject();
-        $html = $message->getBody();
+        $from = $message->getFrom()[0];
+        $to   = $message->getTo()[0];
 
         $payload = [
-            'personalizations' => [[
-                'recipient' => $to
-            ]],
+            'personalizations' => [[ 'recipient' => $to->getAddress() ]],
             'from' => [
-                'fromEmail' => $from,
-                'fromName' => 'Your App'
+                'fromEmail' => $from->getAddress(),
+                'fromName'  => $from->getName() ?? 'Laravel App',
             ],
-            'subject' => $subject,
-            'content' => [
-                [
-                    'type' => 'html',
-                    'value' => $html
-                ]
-            ]
+            'subject' => $message->getSubject(),
+            'content' => [[
+                'type'  => 'html',
+                'value' => $message->getHtmlBody() ?? $message->getTextBody(),
+            ]]
         ];
 
-        $response = Http::withHeaders([
-            'api_key' => $this->apiKey,
-            'Content-Type' => 'application/json',
-            'Accept' => 'application/json',
-        ])->post('https://api.pepipost.com/v2/sendEmail', $payload);
+        $response = $this->client->request('POST', 'https://api.pepipost.com/v2/sendEmail', [
+            'headers' => [
+                'api_key'      => $this->apiKey,
+                'Content-Type' => 'application/json',
+                'Accept'       => 'application/json',
+            ],
+            'json' => $payload,
+        ]);
 
-        return $response->successful();
+        if (intval($response->getStatusCode()) >= 400) {
+            throw new TransportException('Netcore API failed: ' . $response->getContent(false));
+        }
+    }
+
+    public function __toString(): string
+    {
+        return 'netcore';
     }
 }
-
