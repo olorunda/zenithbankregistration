@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Users;
 
+use App\Jobs\sendConfirmationEmail;
 use App\Models\QrCode;
 use App\Models\ValidatedUser;
 use Illuminate\Support\Facades\Storage;
@@ -221,9 +222,8 @@ class Index extends Component
             'body' => $body
         ];
 
-        Mail::to($this->email)->send(new GeneralNotificationMail(
-            json_encode($payload)
-        ));
+        sendConfirmationEmail::dispatch($payload,$this->email);
+
 
     }
 
