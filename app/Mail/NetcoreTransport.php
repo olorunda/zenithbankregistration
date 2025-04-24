@@ -30,29 +30,40 @@ class NetcoreTransport extends AbstractTransport
      * @throws RedirectionExceptionInterface
      * @throws ClientExceptionInterface
      */
-    protected function doSend(RawMessage|SentMessage $message): void
+    protected function doSend(SentMessage $message): void
     {
-        if (!$message instanceof Email) {
+        $email = $message->getOriginalMessage();
+
+        if (!$email instanceof Email) {
             throw new \LogicException('Only Email messages are supported.');
         }
 
-        $from = $message->getFrom()[0];
-        $to   = $message->getTo()[0];
+        $from = $email->getFrom()[0] ?? null;
+        $to = $email->getTo()[0] ?? null;
+
+        if (!$from || !$to) {
+            throw new \RuntimeException("Missing 'From' or 'To' address.");
+        }
 
         $payload = [
-            'personalizations' => [[ 'recipient' => $to->getAddress() ]],
             'from' => [
-                'fromEmail' => $from->getAddress(),
-                'fromName'  => $from->getName() ?? 'Laravel App',
+                'email' => $from->getAddress(),
+                'name'  => $from->getName() ?? 'Laravel App',
             ],
-            'subject' => $message->getSubject(),
+            'subject' => $email->getSubject(),
             'content' => [[
                 'type'  => 'html',
-                'value' => $message->getHtmlBody() ?? $message->getTextBody(),
-            ]]
+                'value' => $email->getHtmlBody() ?? $email->getTextBody() ?? '',
+            ]],
+            'personalizations' => [[
+                'to' => [[
+                    'email' => $to->getAddress(),
+                    'name'  => $to->getName() ?? '',
+                ]],
+            ]],
         ];
 
-        $response = $this->client->request('POST', 'https://api.pepipost.com/v2/sendEmail', [
+        $response = $this->client->request('POST', 'https://emailapi.netcorecloud.net/v5/mail/send', [
             'headers' => [
                 'api_key'      => $this->apiKey,
                 'Content-Type' => 'application/json',
@@ -60,12 +71,13 @@ class NetcoreTransport extends AbstractTransport
             ],
             'json' => $payload,
         ]);
-
-        if (intval($response->getStatusCode()) >= 400) {
-            throw new TransportException('Netcore API failed: ' . $response->getContent(false));
+//dd($payload);
+        if ($response->getStatusCode() >= 400) {
+            throw new \Symfony\Component\Mailer\Exception\TransportException(
+                'Netcore API failed: ' . $response->getContent(false)
+            );
         }
     }
-
     public function __toString(): string
     {
         return 'netcore';

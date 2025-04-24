@@ -222,7 +222,12 @@ class Index extends Component
             'body' => $body
         ];
 
-        sendConfirmationEmail::dispatch($payload,$this->email);
+
+        Mail::to($this->email)->send(new GeneralNotificationMail(
+            json_encode($payload)
+        ));
+
+//        sendConfirmationEmail::dispatch($payload,$this->email);
 
 
     }
