@@ -40,6 +40,9 @@ class Dashboard extends LivewireDatatable
             Column::name('ran')
                 ->label('RAN')->unwrap(),
 
+            Column::name('holdings')
+                ->label('Holdings')->searchable()->unwrap(),
+
 //            Column::name('attending_masterclass')
 //                ->label('Attending MasterClasses')->unwrap(),
 

@@ -21,8 +21,8 @@ class SeedValidatedUser extends Seeder
 
     public function import()
     {
-        $csvFile = fopen('C:\Users\ADMIN\PhpstormProjects\zenithbank\database\seeders\validated_users.csv', 'r'); // Path to your CSV file
-//        $csvFile = fopen('/var/www/html/projects/zenithbankregistration/database/seeders/data.csv', 'r'); // Path to your CSV file
+//        $csvFile = fopen('C:\Users\ADMIN\PhpstormProjects\zenithbank\database\seeders\real.csv', 'r'); // Path to your CSV file
+        $csvFile = fopen('/var/www/html/projects/zenithbankregistration/database/seeders/real.csv', 'r'); // Path to your CSV file
         $data_to_import=[];
 // Check if the file is opened successfully
         if ($csvFile !== false) {
@@ -32,15 +32,17 @@ class SeedValidatedUser extends Seeder
             // Loop through the file line by line
             while (($row = fgetcsv($csvFile)) !== false) {
                 // Combine headers with values
+//                dd($headers);
                 $data = array_combine($headers, $row);
                 $data_to_import[]=[
-                    'ran'=>$data['RAN'],
+//                    'acct_num'=>$data['Account No'],
+                    'ran'=>$data["\u{FEFF}Account No"],
                     'chn'=>$data['CHN'] ?? '.',
-                    'name'=>$data['NAME'] ?? '.',
-                    'holdings'=>$data['HOLDINGS'] ?? '.',
-                    'address'=>$data['ADDRESS'] ?? '.',
-                    'phone_num'=>$data['PHONE NO'] ?? '.',
-                    'emails'=>$data['EMAILS'],
+                    'name'=>$data['Full Name'] ?? '.',
+                    'holdings'=>$data['Holding'] ?? '.',
+                    'address'=>$data['Address'] ?? '.',
+                    'phone_num'=>$data['Mobile Number'] ?? '.',
+                    'emails'=>$data['Email Address'],
                     ];
                 if($i%1000==0){
                     ValidatedUser::insert($data_to_import);

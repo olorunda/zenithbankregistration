@@ -20,7 +20,7 @@ class DatabaseSeeder extends Seeder
 User::truncate();
         \App\Models\User::factory()->create([
             'name' => 'Zenith Admin',
-            'email' => 'zenithadmin@veritasregistra.com',
+            'email' => 'admin@verimeetings.com',
             'password' => Hash::make('veritas@1234')
         ]);
     }

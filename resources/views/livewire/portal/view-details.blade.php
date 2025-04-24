@@ -101,6 +101,11 @@
                     <div class="text-left">
                         {{ $details->registration->ran }}
                     </div>
+                </div>     <div class="border-b-2 border-gray-300 pb-4 mb-4">
+                    <h6 class="text-left text-[#544837] font-semibold mb-2">HOLDINGS:</h6>
+                    <div class="text-left">
+                        {{ $details->registration->holdings }}
+                    </div>
                 </div>
 
                 <div class="border-b-2 border-gray-300 pb-4 mb-4">

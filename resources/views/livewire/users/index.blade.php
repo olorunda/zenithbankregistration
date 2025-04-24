@@ -75,6 +75,9 @@
                     @if($ran_error_message)
                         <p class="text-red-600 font-semibold text-xs mt-1">{{ $ran_error_message }}</p>
                     @endif
+                    @error('ran')
+                    <p class="text-red-600 font-semibold text-xs">{{ $message }}</p>
+                    @enderror
                 </div>
 
                 <!-- Name Input -->

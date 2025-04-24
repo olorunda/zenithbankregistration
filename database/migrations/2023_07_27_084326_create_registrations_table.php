@@ -18,7 +18,8 @@ return new class extends Migration
             $table->string('name');
             $table->string('email');
             $table->string('phone');
-            $table->string('ran')->unique();
+            $table->string('holdings')->nullable();
+            $table->integer('ran')->unique();
 //            $table->string('company', 60);
             $table->string('reason_for_attending', 500);
             $table->string('master_classes', 500);

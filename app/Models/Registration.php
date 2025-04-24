@@ -17,6 +17,7 @@ class Registration extends Model
         'email',
         'phone',
 //        'company',
+        'holdings',
         'consent',
         'reason_for_attending',
         'attending_masterclass',
@@ -31,6 +32,6 @@ class Registration extends Model
 
     public function validateduser()
     {
-        return $this->belongsTo(ValidatedUser::class,'emails','email');
+        return $this->belongsTo(ValidatedUser::class,'ran','ran');
     }
 }

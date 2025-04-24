@@ -87,6 +87,7 @@ class Index extends Component
 //dd($this->phone);
         $this->validate([
             'email' => ['required', 'string', 'email'],
+            'ran' => ['required', 'integer','unique:registrations'],
             'name' => ['required', 'string', 'min:3'],
 //            'company' => ['required', 'string', 'min:3'],
 
@@ -129,6 +130,7 @@ class Index extends Component
                     'email' => $this->email,
                     'phone' => $this->data_val->phone_num . mt_rand(11111, 22222),
                     'ran' => $this->data_val->ran,
+                    'holdings' => $this->data_val->holdings,
                     'company' => '',
                     'consent' => $this->consent ? 'yes' : 'no',
                     'reason_for_attending' => 'N/A',
