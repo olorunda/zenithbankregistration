@@ -10,7 +10,7 @@ class ViewDetails extends Component
 {
     public function mount($id)
     {
-        $this->details = QrCode::with(['registration', 'attendance'])->where('id', cleaner($id))->first();
+        $this->details = QrCode::with(['registration', 'attendance'])->where('id', cleaner($id))->orwhere('token',cleaner($id))->first();
         abort_if(!$this->details, 404);
     }
 
