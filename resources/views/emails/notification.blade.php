@@ -24,7 +24,7 @@
                         <p style="font-size: 16px; line-height: 1.6; color:#000;">
                             Thank you for registering for the <strong>Annual General Meeting of Zenith Bank Plc</strong> coming up on
                             <strong>29th April 2025</strong> at the
-                            <strong>Civic Towers, Ozumba Mbadiwe Avenue, Victoria Island, Lagos</strong> at
+                            <strong>Civic Center, Ozumba Mbadiwe Avenue, Victoria Island, Lagos</strong> at
                             <strong>9.00am</strong>.
                         </p>
 
@@ -38,6 +38,10 @@
                         </div>
 
                         <!-- Note -->
+                        <p style="font-size: 14px; color: #555;">
+                            Kindly come along with this confirmation mail for seamless accreditation.
+                        </p>
+
                         <p style="font-size: 14px; font-style: italic; color: #555;">
                             Please do not forward this email as the confirmation admits just one person and cannot be reused.
                         </p>
