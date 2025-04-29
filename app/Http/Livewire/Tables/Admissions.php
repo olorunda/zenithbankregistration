@@ -24,6 +24,9 @@ class Admissions extends LivewireDatatable
             Column::name("registration.email")
             ->label('Email')->searchable()->unwrap(),
 
+     Column::name("registration.holdings")
+            ->label('Holdings')->searchable()->unwrap(),
+
             DateColumn::raw('attendances.date_admitted')
                 ->label('Date Checked In')
                 ->format('j F, Y H:i a')

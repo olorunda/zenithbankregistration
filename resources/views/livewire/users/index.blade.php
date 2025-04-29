@@ -1,5 +1,7 @@
 @section('title', '34th Zenith Bank::Registration')
+
 <div class="relative z-10 min-h-screen flex items-center justify-center p-4">
+
     <div class="max-w-xl w-full">
         <!-- Header -->
         <div class="text-center mb-12">

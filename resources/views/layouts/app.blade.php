@@ -32,9 +32,10 @@
 <div class="bg-pattern fixed inset-0 z-0"></div>
 
 <!-- Logo -->
-<div class="absolute top-4 right-4">
-    <img src="{{asset('assets/images/vr_logo.png')}}" alt="Veritas Registrars" class="h-12">
+<div class="flex justify-center py-6">
+    <img src="{{ asset('assets/images/vr_logo.png') }}" alt="Veritas Registrars" class="h-24">
 </div>
+
 
     @yield('content')
 
