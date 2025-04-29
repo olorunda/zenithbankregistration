@@ -1,10 +1,12 @@
 @section('title', '34th Zenith Bank::Registration')
 
 <div class="relative z-10 min-h-screen flex items-center justify-center p-4">
+    <!-- Logo -->
 
     <div class="max-w-xl w-full">
         <!-- Header -->
         <div class="text-center mb-12">
+            <img src="{{ asset('assets/images/vr_logo.png') }}" style="margin-left: 45%" class="justify-center h-24" alt="Veritas Registrars" >
             <h1 class="text-4xl font-bold text-gray-900 mb-2">34TH ZENITH BANK</h1>
             <h2 class="text-3xl font-bold text-red-600">ANNUAL GENERAL MEETING</h2>
         </div>

@@ -31,10 +31,7 @@
 <!-- Background Pattern -->
 <div class="bg-pattern fixed inset-0 z-0"></div>
 
-<!-- Logo -->
-<div class="flex justify-center py-6">
-    <img src="{{ asset('assets/images/vr_logo.png') }}" alt="Veritas Registrars" class="h-24">
-</div>
+
 
 
     @yield('content')
