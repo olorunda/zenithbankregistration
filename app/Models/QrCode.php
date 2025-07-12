@@ -22,6 +22,4 @@ class QrCode extends Model
     {
         return $this->belongsTo(Attendance::class, 'registration_id', 'registration_id');
     }
-
-
 }

@@ -18,7 +18,6 @@ return new class extends Migration
             $table->foreignId('registration_id')->constrained()->cascadeOnDelete();
             $table->string('url');
             $table->string('token', 15);
-            $table->string('date_used_master_class')->nullable();
             $table->string('date_used')->nullable();
             $table->timestamps();
             $table->softDeletes();

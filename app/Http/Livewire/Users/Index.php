@@ -3,7 +3,6 @@
 namespace App\Http\Livewire\Users;
 
 use App\Models\QrCode;
-use Illuminate\Support\Facades\Storage;
 use Livewire\Component;
 use Illuminate\Support\Str;
 use App\Models\Registration;
@@ -19,130 +18,99 @@ class Index extends Component
     public bool $show_consent = true;
     public $step_one = true;
     public $final_step = false;
-    public $firstname,$lastname;
+    public $fullname;
     public $company;
     public $job_title;
     public $phone;
     public $email;
     public $qr_code_url;
     public $consent;
-    public $zenith_customer = 'no';
-    public string $reason_for_attending='';
-    public string $master_classes='';
-    public string $attending_masterclass='';
-    protected $listeners = ['hideOtherClasses'];
-    public string $show_masterclasses='display:none';
-    public string $error_message='';
-    /**
-     * @var mixed|string
-     */
-    public string $token_show='';
+    public $zenith_customer = 'yes';
 
     public function render()
     {
         return view('livewire.users.index')->extends('layouts.app')->section('content');
     }
 
-    public function attendingMasterClass(){
-
-        $this->show_masterclasses='display:none';
-        if($this->attending_masterclass == 'yes'){
-            $this->show_masterclasses='';
-        }
-    }
-
-
     public function createBooking()
     {
-
-        if(cleaner($this->attending_masterclass)=='yes'){
-            if(cleaner($this->master_classes)==''){
-                $this->error_message='Please Select a Master Class';
-                return;
-            }
-        }
-//dd($this->phone);
         $this->validate([
             'email' => ['required', 'string', 'email', 'unique:registrations,email'],
-            'firstname' => ['required', 'string', 'min:3'],
-            'lastname' => ['required', 'string', 'min:3'],
-//            'company' => ['required', 'string', 'min:3'],
+            'fullname' => ['required', 'string', 'min:3'],
+            'company' => ['required', 'string', 'min:3'],
             'phone' => ['required', 'unique:registrations,phone'],
-            'zenith_customer' => ['required', 'string', Rule::in(['yes', 'no'])],
-            'reason_for_attending' => ['required'],
-            'attending_masterclass' => ['required', Rule::in(['yes', 'no'])],
-//            'master_classes' => ['required:if:attending_masterclass,==,yes']
+            'zenith_customer' => ['required', 'string', Rule::in(['yes', 'no'])]
         ]);
 
-
-
-        $this->fullname = cleaner($this->firstname.' '.$this->lastname);
+        $this->fullname = cleaner($this->fullname);
         $this->email = cleaner($this->email);
         $this->phone = cleaner($this->phone);
-//        $this->company = cleaner($this->company);
+        $this->company = cleaner($this->company);
         $this->consent = cleaner($this->consent);
         $this->zenith_customer = cleaner($this->zenith_customer);
-        $this->reason_for_attending = cleaner($this->reason_for_attending);
-        $this->attending_masterclass = cleaner($this->attending_masterclass);
-        $this->master_classes = cleaner($this->master_classes);
-
 
         try {
-//            $token =$token_code= $this->verifyToken(mt_rand(10000, 99999));
+            DB::beginTransaction();
+            $registration = Registration::create([
+                'name' => $this->fullname,
+                'email' => $this->email,
+                'phone' => $this->phone,
+                'company' => $this->company,
+                'consent' => $this->consent,
+                'is_zenith_customer' => $this->zenith_customer
+            ]);
 
-//            $token =$token_code= $this->verifyToken($this->generateRandomHex());
+            $token = $this->verifyToken("ZEN-" . Str::random(5) . "-" . mt_rand(1000, 9999));
+            $image = generateQrCode(route('portal.view-registration', $token));
 
-            $token =$token_code=$this->generateRandomHex();
+            $this->qr_code_url = Cloudinary::upload($image)->getSecurePath();
 
-            $image = $base64image= generateQrCode($token);
+            $registration->qrcode()->create([
+                'url' => $this->qr_code_url,
+                'token' => $token,
+            ]);
 
-            DB::transaction(function () use ($token,$image){
-                $registration = Registration::create([
-                    'name' => $this->fullname,
-                    'email' => $this->email,
-                    'phone' => $this->phone,
-                    'company' => '',
-                    'consent' => $this->consent,
-                    'reason_for_attending' => $this->reason_for_attending,
-                    'attending_masterclass' => $this->attending_masterclass,
-                    'master_classes' => $this->master_classes,
-                    'is_zenith_customer' => $this->zenith_customer
-                ]);
+            $body = "<p style='text-align:center; font-weight:bold'>Thank you,  {$this->fullname}</p>";
+            $body .= "<p style='text-align:center;'>You are all signed up for <b>The Zenith Bank International Trade Seminar.</b></p>";
+            $body .= "<p style='text-align:center; font-weight:bold'>Theme: Unlocking Value and Harnessing Growth</p>";
+            $body .= "<p><b>Address: </b>The Civic Centre, Ozumba Mbadiwe, Victoria Island, Lagos.</p>";
+            $body .= "<p><b>Date: </b>Thursday, August 14, 2025.</p>";
+            $body .= "<p><b>Time: </b>9:00 am</p>";
+            $body .= "<div style='text-align:center'><img src='{$this->qr_code_url}' style='width:50%' /></div>";
 
-              $this->qr_code_url = $image;//Cloudinary::upload($image)->getSecurePath();
-                $this->token_show=$token;
-                $imageInfo = explode(";base64,", $image);
-                $imgExt = str_replace('data:image/', '', $imageInfo[0]);
-                $image = str_replace(' ', '+', $imageInfo[1]);
-                Storage::disk('public')->put("qrcode/$token.$imgExt",base64_decode($image));
+            $payload = [
+                'username' => $this->fullname,
+                'email' => $this->email,
+                'subject' => "{$this->fullname}, thank you for registering for the event",
+                'body' => $body
+            ];
 
-                $registration->qrcode()->create([
-                    'url' => $this->qr_code_url,
-                    'token' => $token,
-                ]);
+            try {
+                Mail::to($this->email)->send(new GeneralNotificationMail(
+                    json_encode($payload)
+                ));
+            } catch (\Exception $e) {
+                DB::rollback();
+                \Log::error("Mail Sending Error:".json_encode($e->getMessage()));
+            }
 
-
-            });
+            DB::commit();
 
             $this->step_one = false;
             $this->final_step = true;
-           $this->sendSuccessMail($token_code,$base64image);
-
-        } catch (\Exception $ex) {
-
-            \Log::error("Error Saving Registration:" . json_encode($ex->getMessage()));
-            $this->error_message='Whoops!!! Something went wrong...';
+        } catch (\Throwable $th) {
+            DB::rollBack();
+            \Log::error("Error Saving Registration:".json_encode($th->getMessage()));
+            flash()->addFlash('error', 'Whoops!!! Something went wrong...');
             return;
         }
     }
-
 
     public function attestConsent(): void
     {
         $this->consent = 'yes';
         $this->show_consent = false;
     }
-
 
     public function rejectConsent(): void
     {
@@ -153,54 +121,9 @@ class Index extends Component
     {
         $exist = QrCode::where('token', $token)->exists();
         if ($exist) {
-            return $this->verifyToken(mt_rand(100000,555555));
+            $this->verifyToken($token);
         }
         return $token;
     }
-
-    private function generateRandomHex() {
-
-        $facilityCode = 10; // 8-bit
-        $cardNumber = $this->verifyToken(mt_rand(100000,555555)); // 16-bit
-
-// Convert to binary and concatenate
-        $facilityBinary = str_pad(decbin($facilityCode), 8, '0', STR_PAD_LEFT);
-        $cardNumberBinary = str_pad(decbin($cardNumber), 16, '0', STR_PAD_LEFT);
-
-        $wiegandBinary = $facilityBinary . $cardNumberBinary; // 26-bit
-        $wiegandDecimal = bindec($wiegandBinary); // Convert to decimal
-
-// Output for QR Code
-
-        return $wiegandDecimal;
-    }
-
-
-    private function sendSuccessMail($token_code,$image):void
-    {
-
-        $body = "<p style='text-align:center;'>Thank you,  <b>{$this->fullname}</b> for registering.</p>";
-        $body .= "<p style='text-align:center;'>You are all signed up for <b>Zenith Bank Tech Fair - Future Forward 4.0.</b></p>";
-        $body .= "<p style='text-align:center; font-weight:bold'>Theme: Embedded Finance, Cybersecurity & Growth Imperative – The Impact of AI.</p>";
-        $body .= "<p><b>Address: </b>Eko Hotels and Suites, Plot 1415, Adetokunbo Ademola Street, Victoria Island, Lagos</p>";
-        $body .= "<p><b>Date: </b>Thursday, November 21, 2024.</p>";
-        $body .= "<p><b>Time: </b>8:00 am</p>";
-        $body .= "<div style='text-align:center'><img src='https://www.zbtechfair.com/qrcode/$token_code.png' alt='$token_code.png' style='width:50%' /></div>";
-        $body .= "<p><b>Access Code: </b><b style='color:red'>$token_code</b>.</p>";
-        $payload = [
-            'username' => $this->fullname,
-            'email' => $this->email,
-            'subject' => "{$this->fullname}, thank you for registering for the event",
-            'body' => $body
-        ];
-
-        Mail::to($this->email)->send(new GeneralNotificationMail(
-            json_encode($payload)
-        ));
-
-    }
-
-
-
 
 }

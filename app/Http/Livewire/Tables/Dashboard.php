@@ -13,37 +13,23 @@ class Dashboard extends LivewireDatatable
 
     public function builder()
     {
-        return Registration::query()->leftJoin('qr_codes', 'qr_codes.registration_id', 'registrations.id');
+        return Registration::query()->leftJoin('qr_codes', 'qr_codes.registration_id', 'registrations.id');;
     }
 
     public function columns()
     {
         return [
-
-
-            Column::callback(['qr_codes.id'], function ($id) {
-                return view('table-actions', ['id' => $id]);
-            })->excludeFromExport()->unsortable()->label('Action'),
-
             Column::name("name")
                 ->label('Name')->searchable()->unwrap(),
 
             Column::name('email')
                 ->label('Email')->searchable()->unwrap(),
 
-            Column::name('qr_codes.token')
-                ->label('Token')->searchable()->unwrap(),
-
             Column::name('phone')
                 ->label('Phone')->unwrap(),
 
-            Column::name('reason_for_attending')
-                ->label('Reason For Attending')->unwrap(),
-
-            Column::name('attending_masterclass')
-                ->label('Attending MasterClasses')->unwrap(),
-
-            Column::name('master_classes')->label('Master Classes')->unwrap(),
+            Column::name('company')
+                ->label('Company')->unwrap(),
 
             Column::callback(['consent'], function ($consent) {
                 return strtoupper($consent);
@@ -56,8 +42,11 @@ class Dashboard extends LivewireDatatable
             DateColumn::raw('registrations.created_at')
                 ->label('Date Registered')
                 ->format('j F, Y H:i a')
-                ->defaultSort('desc')->unwrap()
+                ->defaultSort('desc')->unwrap(),
 
+            Column::callback(['qr_codes.token'], function ($token) {
+                return view('table-actions', ['token' => $token]);
+            })->excludeFromExport()->unsortable()->label('Action')
         ];
     }
 }

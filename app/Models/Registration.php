@@ -12,19 +12,8 @@ class Registration extends Model
     use HasFactory, SoftDeletes;
 
     protected $guarded = ['id'];
-    protected $fillable = [
-        'name',
-        'email',
-        'phone',
-//        'company',
-        'consent',
-        'reason_for_attending',
-        'attending_masterclass',
-        'master_classes',
-        'is_zenith_customer'
-    ];
 
-    public function qrcode(): HasOne
+    public function qrcode() : HasOne
     {
         return $this->hasOne(QrCode::class);
     }

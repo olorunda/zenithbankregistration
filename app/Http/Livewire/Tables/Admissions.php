@@ -12,25 +12,20 @@ class Admissions extends LivewireDatatable
     public $exportable = true;
     public function builder()
     {
-        return Attendance::with('registration');//query()->leftJoin('registrations', 'attendances.registration_id', 'registrations.id');
+        return Attendance::query()->leftJoin('registrations', 'attendances.registration_id', 'registrations.id');
     }
 
     public function columns()
     {
         return [
-            Column::name("registration.name")
+            Column::name("registrations.name")
             ->label('Name')->searchable()->unwrap(),
 
-            Column::name("registration.email")
+            Column::name("registrations.email")
             ->label('Email')->searchable()->unwrap(),
 
             DateColumn::raw('attendances.date_admitted')
                 ->label('Date Checked In')
-                ->format('j F, Y H:i a')
-                ->defaultSort('desc')->unwrap(),
-
-        DateColumn::raw('attendances.date_admitted_master_class')
-                ->label('Date Checked In For Master Class')
                 ->format('j F, Y H:i a')
                 ->defaultSort('desc')->unwrap()
         ];

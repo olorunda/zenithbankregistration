@@ -18,10 +18,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('email')->unique();
             $table->string('phone')->unique();
-//            $table->string('company', 60);
-            $table->string('reason_for_attending', 500);
-            $table->string('master_classes', 500);
-            $table->enum('attending_masterclass', ['yes', 'no'])->default('no');
+            $table->string('company', 60);
             $table->enum('consent', ['yes', 'no'])->default('no');
             $table->enum('is_zenith_customer', ['yes', 'no'])->default('no');
             $table->timestamps();

@@ -6,7 +6,6 @@
     "license": "MIT",
     "require": {
         "php": "^8.0.2",
-        "bacon/bacon-qr-code": "^2.0",
         "cloudinary-labs/cloudinary-laravel": "^2.0",
         "dotmarn/laravel-error-views": "^1.0",
         "endroid/qr-code": "^4.3",

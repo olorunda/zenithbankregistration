@@ -4,12 +4,12 @@ import laravel, { refreshPaths } from 'laravel-vite-plugin';
 export default defineConfig({
     plugins: [
         laravel({
-            input: ['resources/js/app.js','public/sw.js','public/register-service-worker.js'],
+            input: ['resources/js/app.js'],
             refresh: [
                 ...refreshPaths,
                 'app/Http/Livewire/**'
             ],
-            // valetTls: 'zenithbank.test',
+            herdTls: 'zenithbankreg.test',
         }),
     ]
 });

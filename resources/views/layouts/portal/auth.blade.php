@@ -7,12 +7,6 @@
     <title>@yield('title')</title>
     @livewireStyles
     @vite(['resources/js/app.js'])
-    <script>
-        if (typeof navigator.serviceWorker !== 'undefined') {
-            navigator.serviceWorker.register('{{asset('sw.js')}}')
-        }
-    </script>
-    <link rel="manifest" href="{{asset('manifest.json')}}">
 </head>
 <body class="font-Poppins">
     @yield('content')
