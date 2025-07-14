@@ -75,7 +75,8 @@ class Index extends Component
             $imageInfo = explode(";base64,", $image);
             $imgExt = str_replace('data:image/', '', $imageInfo[0]);
             $image = str_replace(' ', '+', $imageInfo[1]);
-            Storage::disk('public')->put("qrcode/$token.$imgExt",base64_decode($image));
+            Storage::disk('public')->put("qrcode/$token.$imgExt", base64_decode($image));
+            $this->qr_code_url=route('image',['path'=>"qrcode/$token.$imgExt"]);
 
             $registration->qrcode()->create([
                 'url' => $this->qr_code_url,

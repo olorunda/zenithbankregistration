@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Storage;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,6 +17,11 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return to_route('registration');
 })->name('welcome');
+Route::get('/image', function () {
+    return response()->file(storage_path('app/public/'.request('path')));
+})->name('image');
+
+
 
 Route::group(['namespace' => '\App\Http\Livewire'], function() {
 
