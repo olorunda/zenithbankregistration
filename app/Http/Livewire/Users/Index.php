@@ -3,13 +3,13 @@
 namespace App\Http\Livewire\Users;
 
 use App\Models\QrCode;
+use Illuminate\Support\Facades\Storage;
 use Livewire\Component;
 use Illuminate\Support\Str;
 use App\Models\Registration;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Mail;
-use App\Mail\GeneralNotificationMail;
+use App\Services\NetCoreMailService;
 use App\Rules\PhoneNumberRule;
 use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary;
 
@@ -63,12 +63,25 @@ class Index extends Component
             $token = $this->verifyToken("ZEN-" . Str::random(5) . "-" . mt_rand(1000, 9999));
             $image = generateQrCode(route('portal.view-registration', $token));
 
-            $this->qr_code_url = Cloudinary::upload($image)->getSecurePath();
+//            $this->qr_code_url = Cloudinary::upload($image)->getSecurePath();
+//
+//            $registration->qrcode()->create([
+//                'url' => $this->qr_code_url,
+//                'token' => $token,
+//            ]);
+
+            $this->qr_code_url = $image;//Cloudinary::upload($image)->getSecurePath();
+            $this->token_show=$token;
+            $imageInfo = explode(";base64,", $image);
+            $imgExt = str_replace('data:image/', '', $imageInfo[0]);
+            $image = str_replace(' ', '+', $imageInfo[1]);
+            Storage::disk('public')->put("qrcode/$token.$imgExt",base64_decode($image));
 
             $registration->qrcode()->create([
                 'url' => $this->qr_code_url,
                 'token' => $token,
             ]);
+
 
             $body = "<p style='text-align:center; font-weight:bold'>Thank you,  {$this->fullname}</p>";
             $body .= "<p style='text-align:center;'>You are all signed up for <b>The Zenith Bank International Trade Seminar.</b></p>";
@@ -86,9 +99,18 @@ class Index extends Component
             ];
 
             try {
-                Mail::to($this->email)->send(new GeneralNotificationMail(
-                    json_encode($payload)
-                ));
+                $netcoreMailService = new NetCoreMailService();
+                $success = $netcoreMailService->sendEmail(
+                    $this->email,
+                    $this->fullname,
+                    $payload['subject'],
+                    $body
+                );
+
+                if (!$success) {
+                    DB::rollback();
+                    \Log::error("NetCore Mail Sending Error");
+                }
             } catch (\Exception $e) {
                 DB::rollback();
                 \Log::error("Mail Sending Error:".json_encode($e->getMessage()));
