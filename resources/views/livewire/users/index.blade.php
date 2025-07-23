@@ -96,7 +96,7 @@
                                         class="block px-3 pb-2.5 pt-4 w-full text-white bg-transparent rounded-lg appearance-none focus:outline-none peer peer-focus:outline-none focus:ring-0 border-0 focus:border-0 text-xs lg:text-sm"
                                         placeholder=" " />
                                     <label for="email"
-                                        class="absolute text-sm text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] left-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-focus:scale-75 peer-focus:-translate-y-4 peer-focus:text-white peer-placeholder-shown:top-1/2 peer-focus:top-2 px-2 peer-focus:px-2 peer-[:not(:placeholder-shown)]:scale-75 peer-[:not(:placeholder-shown)]:-translate-y-4 peer-[:not(:placeholder-shown)]:text-white peer-[:not(:placeholder-shown)]:top-2">Email
+                                        class="absolute text-sm text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] left-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-focus:scale-75 peer-focus:-translate-y-4 peer-focus:text-white peer-placeholder-shown:top-1/2 peer-focus:top-2 px-2 peer-focus:px-2 peer-[:not(:placeholder-shown)]:scale-75 peer-[:not(:placeholder-shown)]:-translate-y-4 peer-[:not(:placeholder-shown)]:text-white peer-[:not(:placeholder-shown)]:top-2">email
                                         *</label>
                                     <div
                                         class="absolute bottom-0 left-2 right-2 h-[1px] bg-white peer-focus:bg-white peer-[:not(:placeholder-shown)]:bg-white">
@@ -241,12 +241,16 @@
                                 <p class="text-[#4F596A] font-medium mb-2 text-sm">Hey
                                     <strong>{{ $fullname }}</strong>,
                                     thank
-                                    you for registering for the Zenith Trade Seminar.
+                                    you for registering for the Zenith bank international trade seminar.
                                 </p>
                             </div>
                         </div>
                         <p class="text-white text-sm font-medium text-center">Kindly come along with the QR code to the venue for
-                            Entrance.</p>
+                            entrance.</p>
+                        <button onclick="window.location.reload()"
+                                class="bg-red-600 text-white px-8 py-3 rounded-md uppercase font-semibold mt-4">
+                            Done
+                        </button>
                     </div>
 
                 </div>
@@ -304,6 +308,6 @@
     @endif
 
     <div class="w-full">
-        <p class="text-white text-center mx-auto text-xs lg:text-sm">August 14, 2025.</p>
+        <p class="text-white text-center mx-auto text-xs lg:text-sm">September 10, 2025.</p>
     </div>
 </main>

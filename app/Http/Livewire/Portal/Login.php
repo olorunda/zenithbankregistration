@@ -21,11 +21,10 @@ class Login extends Component
             'password' => ['required', 'string']
         ]);
 
-        if (Auth::attempt(['name' => $this->username, 'password' => $this->password])) {
+        if (Auth::attempt(['email' => $this->username, 'password' => $this->password])) {
             return to_route('portal.dashboard');
-        } else {
+        }
             flash()->addFlash('error', 'Username or Password is incorrect...');
             return;
-        }
     }
 }

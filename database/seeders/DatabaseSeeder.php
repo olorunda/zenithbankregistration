@@ -17,10 +17,6 @@ class DatabaseSeeder extends Seeder
     {
         // \App\Models\User::factory(10)->create();
 
-        \App\Models\User::factory()->create([
-            'name' => 'Zenith Admin',
-            'email' => 'zenithadmin@zbtradeseminar.com',
-            'password' => Hash::make('zenith@1234')
-        ]);
+        \App\Models\User::create(['name' => 'Zenith Admin','email' => 'zenithadmin@zbtradeseminar.com','password' => Hash::make('zenith@1234')]);
     }
 }
