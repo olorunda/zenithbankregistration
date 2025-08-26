@@ -12,7 +12,7 @@
     @vite(['resources/js/app.js'])
 </head>
 
-<body class="bg-[url('/assets/images/bg.png')] flex flex-col font-Poppins bg-no-repeat min-h-screen" style="background-size: 100% 100%">
+<body class="bg-[url('/assets/images/bg.jpg')] flex flex-col font-Poppins bg-repeat min-h-screen" style="background-size: 100% ;">
     <nav class="flex items-center w-full justify-end">
         <div class="py-4 px-2 lg:px-8 lg:py-8">
             <a href="{{ route('welcome') }}" class="">

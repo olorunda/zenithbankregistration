@@ -40,7 +40,7 @@
     "src": "node_modules/intl-tel-input/build/img/flags@2x.png"
   },
   "resources/js/app.css": {
-    "file": "assets/app-899feb20.css",
+    "file": "assets/app-e469055d.css",
     "src": "resources/js/app.css"
   },
   "resources/js/app.js": {
@@ -57,9 +57,9 @@
       "assets/flags@2x-9bd00899.png"
     ],
     "css": [
-      "assets/app-899feb20.css"
+      "assets/app-e469055d.css"
     ],
-    "file": "assets/app-68344b45.js",
+    "file": "assets/app-7342336d.js",
     "isEntry": true,
     "src": "resources/js/app.js"
   }

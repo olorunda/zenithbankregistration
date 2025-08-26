@@ -308,6 +308,6 @@
     @endif
 
     <div class="w-full">
-        <p class="text-white text-center mx-auto text-xs lg:text-sm">September 10, 2025.</p>
+        <p class="text-white text-center mx-auto text-xs lg:text-sm">September 18, 2025.</p>
     </div>
 </main>

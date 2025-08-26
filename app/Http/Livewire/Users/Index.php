@@ -88,7 +88,7 @@ class Index extends Component
             $body .= "<p style='text-align:center;'>You are all signed up for <b>The Zenith Bank International Trade Seminar.</b></p>";
             $body .= "<p style='text-align:center; font-weight:bold'>Theme: Unlocking Value and Harnessing Growth</p>";
             $body .= "<p><b>Address: </b>The Civic Centre, Ozumba Mbadiwe, Victoria Island, Lagos.</p>";
-            $body .= "<p><b>Date: </b>Thursday, September 10, 2025.</p>";
+            $body .= "<p><b>Date: </b>Thursday, September 18, 2025.</p>";
             $body .= "<p><b>Time: </b>9:00 am</p>";
             $body .= "<div style='text-align:center'><img src='{$this->qr_code_url}' style='width:50%' /></div>";
 
