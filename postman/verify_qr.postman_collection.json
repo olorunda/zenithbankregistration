@@ -1,0 +1,142 @@
+{
+  "info": {
+    "_postman_id": "7f9e0a3c-2c29-4fd0-9c6e-verifyqr-001",
+    "name": "ZenithBankRegistration API - verify_qr",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": "Postman collection documenting the /api/verify_qr endpoint.\n\nBase URL variable: {{base_url}} (e.g., http://localhost)\n\nEndpoint Summary:\n- Path: /api/verify_qr\n- Methods: POST (recommended), GET (supported)\n- Auth: Provide a 'token' field equal to '56TYbbbyuebujefn9902b' inside the JSON body (POST) or as a query param (GET).\n- Required fields: token (auth), code (QR code token).\n- Success: {\"status\":\"success\",\"message\":\"Permission Granted\"}\n- Errors: 404 with messages for invalid auth token or invalid QR code.\n\nImplementation reference: routes/api.php."
+  },
+  "item": [
+    {
+      "name": "Verify QR (POST)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/api/verify_qr",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "api",
+            "verify_qr"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"token\": \"{{auth_token}}\",\n  \"code\": \"{{qr_code}}\"\n}"
+        },
+        "description": "Verifies a QR code. The server expects a JSON body for POST requests.\n\nFields:\n- token (string, required): Must equal '56TYbbbyuebujefn9902b'.\n- code (string, required): The QR code token to validate.\n\nResponses:\n- 200: {status: 'success', message: 'Permission Granted'}\n- 404: {status: 'error', message: 'Invalid Authn Code , No entry'}\n- 404: {status: 'error', message: 'Invalid QR Code , No entry'}\n- 500: 'Invalid Json Data' if malformed JSON is provided."
+      },
+      "response": [
+        {
+          "name": "200 OK - Permission Granted",
+          "originalRequest": {
+            "method": "POST",
+            "header": [
+              {"key": "Content-Type", "value": "application/json"}
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/verify_qr",
+              "host": ["{{base_url}}"],
+              "path": ["api", "verify_qr"]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"token\": \"56TYbbbyuebujefn9902b\",\n  \"code\": \"SAMPLE_QR_TOKEN\"\n}"
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {"key": "Content-Type", "value": "application/json"}
+          ],
+          "body": "{\n  \"status\": \"success\",\n  \"message\": \"Permission Granted\"\n}"
+        },
+        {
+          "name": "404 - Invalid Authn Code",
+          "originalRequest": {
+            "method": "POST",
+            "header": [
+              {"key": "Content-Type", "value": "application/json"}
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/verify_qr",
+              "host": ["{{base_url}}"],
+              "path": ["api", "verify_qr"]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"token\": \"WRONG_TOKEN\",\n  \"code\": \"SAMPLE_QR_TOKEN\"\n}"
+            }
+          },
+          "status": "Not Found",
+          "code": 404,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {"key": "Content-Type", "value": "application/json"}
+          ],
+          "body": "{\n  \"status\": \"error\",\n  \"message\": \"Invalid Authn Code , No entry\"\n}"
+        },
+        {
+          "name": "404 - Invalid QR Code",
+          "originalRequest": {
+            "method": "POST",
+            "header": [
+              {"key": "Content-Type", "value": "application/json"}
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/verify_qr",
+              "host": ["{{base_url}}"],
+              "path": ["api", "verify_qr"]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"token\": \"56TYbbbyuebujefn9902b\",\n  \"code\": \"INVALID_QR\"\n}"
+            }
+          },
+          "status": "Not Found",
+          "code": 404,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {"key": "Content-Type", "value": "application/json"}
+          ],
+          "body": "{\n  \"status\": \"error\",\n  \"message\": \"Invalid QR Code , No entry\"\n}"
+        }
+      ]
+    },
+    {
+      "name": "Verify QR (GET)",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/api/verify_qr?token={{auth_token}}&code={{qr_code}}",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "api",
+            "verify_qr"
+          ],
+          "query": [
+            {"key": "token", "value": "{{auth_token}}"},
+            {"key": "code", "value": "{{qr_code}}"}
+          ]
+        },
+        "description": "GET variant supported by Route::any(). Provide 'token' and 'code' as query parameters. Responses mirror the POST variant."
+      },
+      "response": []
+    }
+  ],
+  "variable": [
+    {"key": "base_url", "value": "http://localhost", "type": "string"},
+    {"key": "auth_token", "value": "56TYbbbyuebujefn9902b", "type": "string"},
+    {"key": "qr_code", "value": "SAMPLE_QR_TOKEN", "type": "string"}
+  ]
+}
