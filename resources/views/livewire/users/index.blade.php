@@ -508,6 +508,6 @@
     @endif
 
     <div class="w-full">
-        <p class="text-white text-center mx-auto text-xs lg:text-sm">November 21, 2024.</p>
+        <p class="text-white text-center mx-auto text-xs lg:text-sm">November 20, 2025.</p>
     </div>
 </main>

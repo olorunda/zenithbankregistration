@@ -183,7 +183,7 @@ class Index extends Component
         $body .= "<p style='text-align:center;'>You are all signed up for <b>Zenith Bank Tech Fair - Future Forward 4.0.</b></p>";
         $body .= "<p style='text-align:center; font-weight:bold'>Theme: Embedded Finance, Cybersecurity & Growth Imperative – The Impact of AI.</p>";
         $body .= "<p><b>Address: </b>Eko Hotels and Suites, Plot 1415, Adetokunbo Ademola Street, Victoria Island, Lagos</p>";
-        $body .= "<p><b>Date: </b>Thursday, November 21, 2024.</p>";
+        $body .= "<p><b>Date: </b>Thursday, November 20, 2025.</p>";
         $body .= "<p><b>Time: </b>8:00 am</p>";
         $body .= "<div style='text-align:center'><img src='https://www.zbtechfair.com/qrcode/$token_code.png' alt='$token_code.png' style='width:50%' /></div>";
         $body .= "<p><b>Access Code: </b><b style='color:red'>$token_code</b>.</p>";
