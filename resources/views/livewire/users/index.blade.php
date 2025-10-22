@@ -1,4 +1,4 @@
-@section('title', 'Zenith Tech Fair 2024 4.0::Registration')
+@section('title', 'Zenith Tech Fair 2025 4.0::Registration')
 <main class="flex-grow p-4 lg:max-w-3xl lg:mx-auto w-full">
     <div class="bg-[#111010] bg-opacity-50 backdrop-filter backdrop-blur-md rounded-lg">
         <div class="px-4 py-8 lg:px-4 lg:py-16 mb-4 lg:mb-12">
@@ -336,32 +336,27 @@
                                         wire:model.defer="master_classes" placeholder=" "
                                         class="block px-3 pb-2.5 pt-4 w-full text-white bg-transparent rounded-lg appearance-none focus:outline-none peer peer-focus:outline-none focus:ring-0 border-0 focus:border-0 text-xs lg:text-sm">
                                     <option value="" class="text-black">- Select Master Class -</option>
-                                    <option value="Enterprise AI Adoption:
-                                        Techniques, Infrastructure, and Impact on Operations - Oracle Technology"
-                                            class="text-black">Enterprise AI Adoption:
-                                        Techniques, Infrastructure, and Impact on Operations - Oracle Technology
+                                    <option value="Agentic AI & Autonomous Agents - McKinsey"
+                                            class="text-black">Agentic AI & Autonomous Agents - McKinsey
                                     </option>
-                                    <option value="Advanced Threat Actor Analysis and
-                                        Attribution through AI-Powered Insights - CyberSOC" class="text-black">Advanced
-                                        Threat Actor Analysis and
-                                        Attribution through AI-Powered Insights - CyberSOC
+                                    <option value="Next-Genenration Connectivity: 5G, 5G-Advanced & Emerging 6G+" class="text-black">Advanced
+                                        Next-Genenration Connectivity: 5G, 5G-Advanced & Emerging 6G+
                                     </option>
-                                    <option value="Accelerating Innovation: An
-                                        Overview of Hybrid Distributed cloud and its capabilities for FSS - IBM"
-                                            class="text-black">Accelerating Innovation: An
-                                        Overview of Hybrid Distributed cloud and its capabilities for FSS - IBM
+                                    <option value="Cybersecurity & Zero-Trust Architecture"
+                                            class="text-black">Cybersecurity & Zero-Trust Architecture
                                     </option>
-                                    <option value="Transforming Customer Experience with AI - Microsoft"
-                                            class="text-black">Transforming Customer Experience with AI - Microsoft
-                                    </option> <option value="Generative AI and AI/AML for Financial Services (AWS)"
-                                            class="text-black">Generative AI and AI/AML for Financial Services - AWS
+                                    <option value="Edge Computing + Internet of Behavior (IoB)"
+                                            class="text-black">Edge Computing + Internet of Behavior (IoB)
                                     </option>
-                                    </option> <option value="Grow Your Business with Google AI(Google)"
-                                            class="text-black">Grow Your Business with Google AI - Google
-                                    </option>
-                                    </option> <option value="Non-Stop Banking, Resilience boosts Intelligence - Huawei"
-                                            class="text-black">Non-Stop Banking, Resilience boosts Intelligence - Huawei
-                                    </option>
+{{--                                    <option value="Generative AI and AI/AML for Financial Services (AWS)"--}}
+{{--                                            class="text-black">Generative AI and AI/AML for Financial Services - AWS--}}
+{{--                                    </option>--}}
+{{--                                    </option> <option value="Grow Your Business with Google AI(Google)"--}}
+{{--                                            class="text-black">Grow Your Business with Google AI - Google--}}
+{{--                                    </option>--}}
+{{--                                    </option> <option value="Non-Stop Banking, Resilience boosts Intelligence - Huawei"--}}
+{{--                                            class="text-black">Non-Stop Banking, Resilience boosts Intelligence - Huawei--}}
+{{--                                    </option>--}}
                                 </select>
 
                                 <label for="master_classes"
