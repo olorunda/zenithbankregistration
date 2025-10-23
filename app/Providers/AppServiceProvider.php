@@ -3,7 +3,11 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
-
+use Illuminate\Support\Facades\Mail;
+use App\Mail\NetcoreTransport;
+use Illuminate\Mail\MailManager;
+use Symfony\Component\Mailer\Transport\Dsn;
+use Symfony\Component\HttpClient\HttpClient;
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -24,5 +28,11 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         //
+        Mail::extend('netcore', function ($config) {
+            return new NetcoreTransport(
+                $config['api_key'],
+                HttpClient::create()
+            );
+        });
     }
 }

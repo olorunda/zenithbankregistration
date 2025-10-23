@@ -44,7 +44,10 @@ return [
             'timeout' => null,
             'local_domain' => env('MAIL_EHLO_DOMAIN'),
         ],
-
+        'netcore' => [
+            'transport' => 'netcore',
+            'api_key' => env('NETCORE_API_KEY'),
+        ],
         'ses' => [
             'transport' => 'ses',
         ],
