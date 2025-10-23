@@ -4,3 +4,4 @@
 /storage/
 /public/qrcode/
 .*zip
+.env
