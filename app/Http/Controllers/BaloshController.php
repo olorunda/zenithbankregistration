@@ -52,7 +52,9 @@ class BaloshController extends Controller
 
         $code=request()->code;
 
-        $this->details = QrCode::with(['registration', 'attendance'])->whereNull('date_used')->where('token', ($code))->first();
+        $this->details = QrCode::with(['registration', 'attendance'])
+            //->whereNull('date_used')
+            ->where('token', ($code))->first();
 //        if (request()->token != '56TYbbbyuebujefn9902b') {
 //            return response()->json(['status' => 'error', 'message' => 'Invalid Authn Code , No entry'], 404);
 //        }

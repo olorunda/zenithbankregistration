@@ -1,6 +1,6 @@
 @section('title', 'Zenith Tech Fair 2025 4.0::Registration')
 <main class="flex-grow p-4 lg:max-w-3xl lg:mx-auto w-full">
-    <div class="bg-[#111010] bg-opacity-50 backdrop-filter backdrop-blur-md rounded-lg">
+    <div class="bg-[#111010] bg-opacity-5 backdrop-filter backdrop-blur-md rounded-lg">
         <div class="px-4 py-8 lg:px-4 lg:py-16 mb-4 lg:mb-12">
             <div class="px-4 lg:px-16 w-full h-[150px] lg:h-[200px]">
                 <img src="{{ asset('assets/images/logo_white.png') }}" alt=""
